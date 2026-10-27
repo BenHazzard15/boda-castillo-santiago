@@ -1,132 +1,262 @@
-[
-  {
-    "id": 0,
-    "numero": 0,
-    "nombre": "Mesa Presidencial • Ester & Samuel",
-    "x": 50.0,
-    "y": 18.0,
-    "shape": "oval",
-    "capacidad": 6,
-    "descripcion": "Mesa de los novios y padrinos frente al Muro de Honor"
-  },
-  {
-    "id": 1,
-    "numero": 1,
-    "nombre": "Albariza",
-    "x": 26.0,
-    "y": 32.0,
-    "shape": "circle",
-    "capacidad": 8,
-    "descripcion": "Familia Muñoz (Tíos y primos)"
-  },
-  {
-    "id": 2,
-    "numero": 2,
-    "nombre": "Manzanilla",
-    "x": 74.0,
-    "y": 32.0,
-    "shape": "circle",
-    "capacidad": 8,
-    "descripcion": "Familia Madrid (Tíos y primos)"
-  },
-  {
-    "id": 3,
-    "numero": 3,
-    "nombre": "Bajo de Guía",
-    "x": 19.0,
-    "y": 48.0,
-    "shape": "circle",
-    "capacidad": 8,
-    "descripcion": "Familia Gómez (Tíos y primos maternos)"
-  },
-  {
-    "id": 4,
-    "numero": 4,
-    "nombre": "Doñana",
-    "x": 81.0,
-    "y": 48.0,
-    "shape": "circle",
-    "capacidad": 9,
-    "descripcion": "Amigos íntimos de la novia"
-  },
-  {
-    "id": 5,
-    "numero": 5,
-    "nombre": "Torre del Homenaje",
-    "x": 37.0,
-    "y": 34.0,
-    "shape": "circle",
-    "capacidad": 9,
-    "descripcion": "Amigos íntimos del novio"
-  },
-  {
-    "id": 6,
-    "numero": 6,
-    "nombre": "Guadalquivir",
-    "x": 63.0,
-    "y": 34.0,
-    "shape": "circle",
-    "capacidad": 8,
-    "descripcion": "Compañeros de trabajo de la novia"
-  },
-  {
-    "id": 7,
-    "numero": 7,
-    "nombre": "Bonanza",
-    "x": 36.0,
-    "y": 62.0,
-    "shape": "circle",
-    "capacidad": 8,
-    "descripcion": "Compañeros de trabajo del novio"
-  },
-  {
-    "id": 8,
-    "numero": 8,
-    "nombre": "San Salvador",
-    "x": 64.0,
-    "y": 62.0,
-    "shape": "circle",
-    "capacidad": 8,
-    "descripcion": "Amigos de Sevilla y Cádiz"
-  },
-  {
-    "id": 9,
-    "numero": 9,
-    "nombre": "La Calzada",
-    "x": 23.0,
-    "y": 65.0,
-    "shape": "circle",
-    "capacidad": 8,
-    "descripcion": "Amigos de los padres de la novia"
-  },
-  {
-    "id": 10,
-    "numero": 10,
-    "nombre": "Las Piletas",
-    "x": 77.0,
-    "y": 65.0,
-    "shape": "circle",
-    "capacidad": 8,
-    "descripcion": "Amigos de los padres del novio"
-  },
-  {
-    "id": 11,
-    "numero": 11,
-    "nombre": "Barrameda",
-    "x": 33.0,
-    "y": 78.0,
-    "shape": "circle",
-    "capacidad": 8,
-    "descripcion": "Mesa Joven / Primos"
-  },
-  {
-    "id": 12,
-    "numero": 12,
-    "nombre": "Tartessos",
-    "x": 67.0,
-    "y": 78.0,
-    "shape": "circle",
-    "capacidad": 8,
-    "descripcion": "Familia de Madrid e invitados especiales"
-  }
-]
+{
+  "tables": [
+    {
+      "id": 0,
+      "numero": 0,
+      "nombre": "Mesa Presidencial • Ester & Samuel",
+      "x": 50.0,
+      "y": 18.0,
+      "rotation": 0,
+      "shape": "oval",
+      "capacidad": 6,
+      "descripcion": "Mesa de los novios y padrinos frente al Muro de Honor"
+    },
+    {
+      "id": 1,
+      "numero": 1,
+      "nombre": "Albariza",
+      "x": 26.0,
+      "y": 32.0,
+      "rotation": 0,
+      "shape": "circle",
+      "capacidad": 8,
+      "descripcion": "Familia Muñoz (Tíos y primos)"
+    },
+    {
+      "id": 2,
+      "numero": 2,
+      "nombre": "Manzanilla",
+      "x": 74.0,
+      "y": 32.0,
+      "rotation": 0,
+      "shape": "circle",
+      "capacidad": 8,
+      "descripcion": "Familia Madrid (Tíos y primos)"
+    },
+    {
+      "id": 3,
+      "numero": 3,
+      "nombre": "Bajo de Guía",
+      "x": 19.0,
+      "y": 48.0,
+      "rotation": 0,
+      "shape": "circle",
+      "capacidad": 8,
+      "descripcion": "Familia Gómez (Tíos y primos maternos)"
+    },
+    {
+      "id": 4,
+      "numero": 4,
+      "nombre": "Doñana",
+      "x": 81.0,
+      "y": 48.0,
+      "rotation": 0,
+      "shape": "circle",
+      "capacidad": 9,
+      "descripcion": "Amigos íntimos de la novia"
+    },
+    {
+      "id": 5,
+      "numero": 5,
+      "nombre": "Torre del Homenaje",
+      "x": 37.0,
+      "y": 34.0,
+      "rotation": 0,
+      "shape": "circle",
+      "capacidad": 9,
+      "descripcion": "Amigos íntimos del novio"
+    },
+    {
+      "id": 6,
+      "numero": 6,
+      "nombre": "Guadalquivir",
+      "x": 63.0,
+      "y": 34.0,
+      "rotation": 0,
+      "shape": "circle",
+      "capacidad": 8,
+      "descripcion": "Compañeros de trabajo de la novia"
+    },
+    {
+      "id": 7,
+      "numero": 7,
+      "nombre": "Bonanza",
+      "x": 36.0,
+      "y": 62.0,
+      "rotation": 0,
+      "shape": "circle",
+      "capacidad": 8,
+      "descripcion": "Compañeros de trabajo del novio"
+    },
+    {
+      "id": 8,
+      "numero": 8,
+      "nombre": "San Salvador",
+      "x": 64.0,
+      "y": 62.0,
+      "rotation": 0,
+      "shape": "circle",
+      "capacidad": 8,
+      "descripcion": "Amigos de Sevilla y Cádiz"
+    },
+    {
+      "id": 9,
+      "numero": 9,
+      "nombre": "La Calzada",
+      "x": 23.0,
+      "y": 65.0,
+      "rotation": 0,
+      "shape": "circle",
+      "capacidad": 8,
+      "descripcion": "Amigos de los padres de la novia"
+    },
+    {
+      "id": 10,
+      "numero": 10,
+      "nombre": "Las Piletas",
+      "x": 77.0,
+      "y": 65.0,
+      "rotation": 0,
+      "shape": "circle",
+      "capacidad": 8,
+      "descripcion": "Amigos de los padres del novio"
+    },
+    {
+      "id": 11,
+      "numero": 11,
+      "nombre": "Barrameda",
+      "x": 33.0,
+      "y": 78.0,
+      "rotation": 0,
+      "shape": "circle",
+      "capacidad": 8,
+      "descripcion": "Mesa Joven / Primos"
+    },
+    {
+      "id": 12,
+      "numero": 12,
+      "nombre": "Tartessos",
+      "x": 67.0,
+      "y": 78.0,
+      "rotation": 0,
+      "shape": "circle",
+      "capacidad": 8,
+      "descripcion": "Familia de Madrid e invitados especiales"
+    }
+  ],
+  "elements": [
+    {
+      "id": "elem-entrance",
+      "type": "entrance",
+      "nombre": "Entrada Principal",
+      "subtitulo": "Arco del Patio de Armas",
+      "x": 50.0,
+      "y": 92.5,
+      "rotation": 0,
+      "width": 140,
+      "height": 28,
+      "icon": "🚪",
+      "color": "#3B82F6",
+      "deletable": true
+    },
+    {
+      "id": "elem-stage",
+      "type": "stage",
+      "nombre": "Estrado Presidencial",
+      "subtitulo": "Muro de Honor",
+      "x": 50.0,
+      "y": 9.0,
+      "rotation": 0,
+      "width": 210,
+      "height": 32,
+      "icon": "✦",
+      "color": "#C59F4E",
+      "deletable": true
+    },
+    {
+      "id": "elem-dance-floor",
+      "type": "dancefloor",
+      "nombre": "Pista de Baile",
+      "subtitulo": "Música & Luces",
+      "x": 50.0,
+      "y": 70.0,
+      "rotation": 0,
+      "width": 96,
+      "height": 96,
+      "icon": "💃",
+      "color": "#C59F4E",
+      "shape": "circle",
+      "deletable": true
+    },
+    {
+      "id": "elem-bar",
+      "type": "bar",
+      "nombre": "Barra Cóctel",
+      "subtitulo": "Manzanilla de Sanlúcar",
+      "x": 89.0,
+      "y": 52.0,
+      "rotation": 0,
+      "width": 88,
+      "height": 70,
+      "icon": "🍷",
+      "color": "#C59F4E",
+      "deletable": true
+    },
+    {
+      "id": "elem-restrooms",
+      "type": "restrooms",
+      "nombre": "Servicios Sanitarios",
+      "subtitulo": "Aseos Señoras & Caballeros",
+      "x": 10.0,
+      "y": 62.0,
+      "rotation": 0,
+      "width": 78,
+      "height": 54,
+      "icon": "🚻",
+      "color": "#10B981",
+      "deletable": true
+    },
+    {
+      "id": "elem-photocall",
+      "type": "photocall",
+      "nombre": "Photocall & Firmas",
+      "subtitulo": "Recuerdos del enlace",
+      "x": 86.0,
+      "y": 82.0,
+      "rotation": 0,
+      "width": 84,
+      "height": 50,
+      "icon": "📸",
+      "color": "#8B5CF6",
+      "deletable": true
+    },
+    {
+      "id": "elem-torre",
+      "type": "landmark",
+      "nombre": "Torre del Homenaje",
+      "subtitulo": "Fortaleza S. XV",
+      "x": 7.5,
+      "y": 9.5,
+      "rotation": 0,
+      "width": 95,
+      "height": 95,
+      "icon": "🏰",
+      "color": "#786D5F",
+      "deletable": true
+    },
+    {
+      "id": "elem-compass",
+      "type": "compass",
+      "nombre": "Rosa de los Vientos",
+      "subtitulo": "Norte",
+      "x": 89.0,
+      "y": 12.0,
+      "rotation": 0,
+      "width": 46,
+      "height": 46,
+      "icon": "🧭",
+      "color": "#C59F4E",
+      "deletable": true
+    }
+  ]
+}

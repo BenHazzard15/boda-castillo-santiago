@@ -1555,3 +1555,501 @@ body::before {
     font-size: 2.5rem;
   }
 }
+
+/* ==========================================================================
+   Organizer Panel Dedicated Styles (organizador.html)
+   ========================================================================== */
+.organizer-page {
+  background-color: var(--stone-50);
+}
+
+.organizer-topbar {
+  background: linear-gradient(90deg, #1C1917 0%, #292524 100%);
+  color: #fff;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 2px solid var(--gold-500);
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 120;
+}
+
+.organizer-topbar-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.organizer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.organizer-badge-live {
+  background: var(--gold-500);
+  color: #1C1917;
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: 0 0 10px rgba(197, 159, 78, 0.4);
+}
+
+.organizer-badge-live::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #1C1917;
+  animation: liveBlink 1.2s infinite ease-in-out;
+}
+
+@keyframes liveBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.7); }
+}
+
+.organizer-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.btn-guest-view {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-guest-view:hover {
+  background: var(--stone-white);
+  color: var(--stone-900);
+  border-color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Command Bar */
+.organizer-command-bar {
+  background: var(--stone-white);
+  border-bottom: 1px solid var(--stone-300);
+  padding: 0.75rem 1.25rem;
+  position: sticky;
+  top: 58px;
+  z-index: 90;
+  box-shadow: var(--shadow-sm);
+}
+
+.organizer-command-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.organizer-cmd-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-cmd {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.48rem 0.95rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--stone-300);
+  background: var(--stone-white);
+  color: var(--stone-800);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-cmd:hover {
+  background: var(--gold-100);
+  border-color: var(--gold-500);
+  color: var(--gold-700);
+  transform: translateY(-1px);
+}
+
+.btn-cmd.primary {
+  background: var(--gold-500);
+  border-color: var(--gold-600);
+  color: #fff;
+  box-shadow: 0 2px 8px var(--gold-glow);
+}
+
+.btn-cmd.primary:hover {
+  background: var(--gold-600);
+  color: #fff;
+}
+
+/* Workspace 2-Column Grid */
+.organizer-workspace {
+  max-width: 1440px;
+  margin: 1.25rem auto 2.5rem;
+  padding: 0 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .organizer-workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Inspector Sidebar */
+.organizer-inspector {
+  background: var(--stone-white);
+  border: 1.5px solid var(--stone-300);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 650px;
+}
+
+.inspector-header {
+  padding: 1rem 1.25rem;
+  background: var(--stone-900);
+  color: #fff;
+  border-bottom: 2px solid var(--gold-500);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inspector-title {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.inspector-body {
+  padding: 0.85rem;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inspector-table-card {
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--stone-200);
+  background: var(--stone-50);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all var(--transition-fast);
+}
+
+.inspector-table-card:hover {
+  background: var(--gold-100);
+  border-color: var(--gold-400);
+  transform: translateX(2px);
+}
+
+.inspector-table-card.active {
+  background: var(--gold-100);
+  border-color: var(--gold-500);
+  box-shadow: 0 0 0 2px var(--gold-glow);
+}
+
+.inspector-table-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.inspector-table-title {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--stone-900);
+}
+
+.inspector-table-sub {
+  font-size: 0.72rem;
+  color: var(--stone-500);
+}
+
+.inspector-table-coords {
+  font-size: 0.72rem;
+  font-family: monospace;
+  font-weight: 700;
+  padding: 0.2rem 0.45rem;
+  border-radius: var(--radius-sm);
+  background: var(--stone-200);
+  color: var(--stone-800);
+}
+
+/* Floating Drag Coordinate HUD */
+.drag-hud {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(29, 26, 23, 0.92);
+  color: #fff;
+  border: 1px solid var(--gold-500);
+  border-radius: var(--radius-md);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.78rem;
+  font-family: monospace;
+  font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  display: none;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.drag-hud.active {
+  display: block;
+}
+
+/* ==========================================================================
+   Full Venue Layout Editor & Gizmo Styles
+   ========================================================================== */
+
+/* SVG Venue Elements */
+.svg-venue-element {
+  cursor: grab;
+  transition: filter var(--transition-fast);
+}
+
+.svg-venue-element:active {
+  cursor: grabbing !important;
+}
+
+.svg-venue-element:hover {
+  filter: brightness(1.06) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+}
+
+.svg-venue-element.selected {
+  filter: drop-shadow(0 0 12px rgba(197, 159, 78, 0.8)) !important;
+}
+
+.svg-venue-element.selected .elem-box {
+  stroke: var(--gold-500) !important;
+  stroke-width: 3.5 !important;
+}
+
+/* Selection bounding ring */
+.svg-gizmo-ring {
+  fill: none;
+  stroke: var(--gold-500);
+  stroke-width: 1.8;
+  stroke-dasharray: 5 3;
+  pointer-events: none;
+}
+
+/* Inspector Tabs */
+.inspector-tabs {
+  display: flex;
+  background: var(--stone-200);
+  border-bottom: 1px solid var(--stone-300);
+}
+
+.inspector-tab-btn {
+  flex: 1;
+  padding: 0.65rem 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: var(--stone-600);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.inspector-tab-btn.active {
+  background: var(--stone-white);
+  color: var(--stone-900);
+  border-bottom: 2px solid var(--gold-500);
+}
+
+.inspector-tab-btn:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--stone-800);
+}
+
+/* Inspector Form */
+.inspector-form {
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--stone-700);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--stone-300);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--stone-900);
+  background: var(--stone-white);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.form-input:focus {
+  border-color: var(--gold-500);
+  box-shadow: 0 0 0 3px var(--gold-glow);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+/* Rotation Controls */
+.rotation-control-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rotation-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--stone-300);
+  background: var(--stone-white);
+  color: var(--stone-800);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  transition: all var(--transition-fast);
+}
+
+.rotation-btn:hover {
+  background: var(--gold-100);
+  border-color: var(--gold-500);
+  color: var(--gold-700);
+}
+
+.rotation-slider {
+  flex: 1;
+  accent-color: var(--gold-500);
+  cursor: pointer;
+}
+
+.btn-danger {
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid #EF4444;
+  background: #FEF2F2;
+  color: #DC2626;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all var(--transition-fast);
+  margin-top: 0.5rem;
+}
+
+.btn-danger:hover {
+  background: #DC2626;
+  color: #fff;
+}
+
+/* Add Item Modal Grid */
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.75rem;
+}
+
+.template-card {
+  padding: 1rem 0.75rem;
+  border: 1.5px solid var(--stone-200);
+  border-radius: var(--radius-lg);
+  background: var(--stone-white);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.45rem;
+  transition: all var(--transition-fast);
+}
+
+.template-card:hover {
+  border-color: var(--gold-500);
+  background: var(--gold-100);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.template-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.template-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--stone-900);
+}
+
+.template-desc {
+  font-size: 0.68rem;
+  color: var(--stone-500);
+}
+

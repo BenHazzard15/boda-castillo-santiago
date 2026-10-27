@@ -35,29 +35,42 @@ Una aplicación web interactiva, *mobile-first* y de estética nupcial de lujo, 
 - **Ruta Guiada Animada**: Traza una curva fluida de acceso desde la puerta principal hasta la mesa asignada, con flujo animado de guiones dorados y baliza pulsante en destino.
 - **Navegación Táctil**: Desplazamiento (*pan*) y zoom mediante pellizco táctil (*pinch-to-zoom*) en smartphones, rueda del ratón o botones flotantes (`+`, `−`, `⟲`).
 
-### 4. Modo Organizador (Drag & Drop de Mesas para los Novios)
-- Permite a los novios o wedding planners arrastrar las mesas directamente sobre el plano interactivo para probar distribuciones reales.
-- **Coordenadas en Porcentajes**: Separadas en `mesas-config.json` (`{ "id": 1, "x": 26.0, "y": 32.0 }`).
-- **Botón "Copiar JSON"**: Copia las nuevas coordenadas listas para pegar en el archivo de configuración.
-- **Botón "Guardar"**: Almacena las coordenadas en el `localStorage` del navegador para que los cambios persistan en ese dispositivo.
+### 4. Panel Privado del Organizador y Editor Integral del Recinto (`organizador.html`)
+- **Acceso Exclusivo**: El modo de edición está completamente separado y oculto de la web pública de invitados (`index.html`). Solo tú o quien disponga del enlace directo a `organizador.html` puede gestionar el recinto.
+- **Edición Total de Instalaciones y Elementos**:
+  - Todos los elementos del recinto son **editables, arrastrables, rotables (0-360°), borrables y creables**:
+    - 🚪 **Entrada Principal** (Arco del Patio de Armas)
+    - ✦ **Estrado Presidencial** (Muro de Honor de los novios)
+    - 🍷 **Barra de Cóctel** (Vinos y Manzanilla de Sanlúcar)
+    - 📸 **Photocall & Rincón de Firmas**
+    - 🚻 **Servicios Sanitarios** (Aseos de Señoras y Caballeros)
+    - 🧭 **Rosa de los Vientos / Brújula de Orientación**
+    - 💃 **Pista de Baile Central**
+    - 🏰 **Torre del Homenaje** (S. XV)
+- **Creador de Nuevos Elementos (Catálogo y Plantillas)**:
+  - Botón **"＋ Crear Elemento"** para incorporar nuevos espacios al enlace según sea necesario:
+    - Mesas circulares o imperiales
+    - Barras de cóctel adicionales
+    - Zona Chillout & descanso
+    - Escenario / Cabina de DJ
+    - Mesa Dulce / Candy Bar
+    - Centros decorativos / Flores
+    - Aseos adicionales o accesos secundarios
+- **Renombrado y Edición de Mesas en Vivo**:
+  - Cambia los nombres temáticos de las mesas directamente en la página (*Albariza, Manzanilla, Bajo de Guía, Doñana*, etc.) sin tocar código.
+  - Ajusta el número de mesa, capacidad de sillas y descripción/parentesco.
+  - Los nuevos nombres se reflejan de inmediato en las etiquetas flotantes del plano SVG, en el listado del inspector y en la ficha del invitado.
+- **Rotación Milimétrica**: Girador rápido de `↺ -15°` / `↻ +15°` o deslizador continuo de `0°` a `360°` para orientar mesas y elementos en cualquier ángulo.
+- **HUD y Coordenadas en Vivo**: Muestra la posición $X\%, Y\%$ y rotación mientras arrastras cualquier elemento sobre el plano.
+- **Sincronización en Tiempo Real entre Pestañas**: Al pulsar **"Guardar en este Navegador"**, la web de invitados (`index.html`) detecta los cambios mediante eventos de almacenamiento y actualiza el plano de inmediato.
+- **Exportación JSON Definitiva**: Permite descargar o copiar `mesas-config.json` para dejar la configuración permanente para cualquier dispositivo.
 
 ---
 
-## 🚀 Cómo Ejecutar la Aplicación
+## 🚀 Enlaces de la Aplicación
 
-### Opción 1: Servidor Local (Recomendado para lectura nativa de Excel)
-Puedes iniciar un servidor ligero con Python o Node:
-
-```bash
-# Con Python
-python -m http.server 8085
-
-# Luego abre en tu navegador:
-# http://localhost:8085
-```
-
-### Opción 2: Abrir directamente `index.html`
-Puedes hacer doble clic en `index.html` en cualquier navegador moderno. La aplicación activará de forma inteligente el motor de datos local y admitirá que arrastres tu archivo `invitados.xlsx` sobre la pantalla.
+- **📱 Web Pública para Invitados (Código QR)**: `http://localhost:8085/` o [index.html](file:///g:/Mi%20unidad/Benja/Proyectos%20IA/Paginas%20Web/Mesas-Matri-web/index.html)
+- **🛠️ Panel Privado de Organización**: `http://localhost:8085/organizador.html` o [organizador.html](file:///g:/Mi%20unidad/Benja/Proyectos%20IA/Paginas%20Web/Mesas-Matri-web/organizador.html)
 
 ---
 
@@ -65,16 +78,18 @@ Puedes hacer doble clic en `index.html` en cualquier navegador moderno. La aplic
 
 ```
 Mesas-Matri-web/
-├── index.html            # Estructura semántica, accesibilidad y maquetación SVG
-├── styles.css            # Sistema de diseño de lujo (paleta piedra de castillo y oro)
-├── app.js                # Lógica: SheetJS, buscador, mapa SVG, ruta, drag & drop
-├── mesas-config.json     # Coordenadas y nombres temáticos de las mesas
+├── index.html            # Web pública para invitados (QR): buscador, ruta, plano de sólo lectura
+├── app.js                # Lógica del invitado: autocompletado, ficha, ruta animada, directorio
+├── organizador.html      # Panel privado del organizador con drag & drop de mesas
+├── organizador.js        # Lógica de edición: inspector, HUD de coordenadas, guardado y exportación
+├── styles.css            # Sistema de diseño de lujo nupcial compartido
+├── mesas-config.json     # Coordenadas maestras y nombres temáticos de las mesas
 ├── invitados.xlsx        # Hoja de cálculo principal con los 104 invitados
-├── invitados.json        # Copia JSON idéntica para máxima compatibilidad
-├── generate_data.py      # Script Python que generó la base de datos de ejemplo
+├── invitados.json        # Copia JSON idéntica para contingencias offline
+├── generate_data.py      # Script generador de la base de datos de ejemplo
 ├── vendor/
 │   └── xlsx.full.min.js  # Copia local de SheetJS para funcionamiento 100% offline
-└── README.md             # Esta documentación
+└── README.md             # Documentación del proyecto
 ```
 
 ---

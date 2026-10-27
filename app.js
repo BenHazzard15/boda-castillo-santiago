@@ -34,7 +34,18 @@
     { id: 9, numero: 9, nombre: "La Calzada", x: 23.0, y: 65.0, shape: "circle", capacidad: 8, descripcion: "Amigos de los padres de la novia" },
     { id: 10, numero: 10, nombre: "Las Piletas", x: 77.0, y: 65.0, shape: "circle", capacidad: 8, descripcion: "Amigos de los padres del novio" },
     { id: 11, numero: 11, nombre: "Barrameda", x: 33.0, y: 78.0, shape: "circle", capacidad: 8, descripcion: "Mesa Joven / Primos" },
-    { id: 12, numero: 12, nombre: "Tartessos", x: 67.0, y: 78.0, shape: "circle", capacidad: 8, descripcion: "Familia de Madrid e invitados especiales" }
+  ];
+
+  // Default venue installations & landmark elements
+  const DEFAULT_ELEMENTS_FALLBACK = [
+    { id: "elem-entrance", type: "entrance", nombre: "Entrada Principal", subtitulo: "Arco del Patio de Armas", x: 50.0, y: 92.5, rotation: 0, width: 140, height: 28, icon: "🚪", color: "#3B82F6", deletable: true },
+    { id: "elem-stage", type: "stage", nombre: "Estrado Presidencial", subtitulo: "Muro de Honor", x: 50.0, y: 9.0, rotation: 0, width: 210, height: 32, icon: "✦", color: "#C59F4E", deletable: true },
+    { id: "elem-dance-floor", type: "dancefloor", nombre: "Pista de Baile", subtitulo: "Música & Luces", x: 50.0, y: 70.0, rotation: 0, width: 96, height: 96, icon: "💃", color: "#C59F4E", shape: "circle", deletable: true },
+    { id: "elem-bar", type: "bar", nombre: "Barra Cóctel", subtitulo: "Manzanilla de Sanlúcar", x: 89.0, y: 52.0, rotation: 0, width: 88, height: 70, icon: "🍷", color: "#C59F4E", deletable: true },
+    { id: "elem-restrooms", type: "restrooms", nombre: "Servicios Sanitarios", subtitulo: "Aseos Señoras & Caballeros", x: 10.0, y: 62.0, rotation: 0, width: 78, height: 54, icon: "🚻", color: "#10B981", deletable: true },
+    { id: "elem-photocall", type: "photocall", nombre: "Photocall & Firmas", subtitulo: "Recuerdos del enlace", x: 86.0, y: 82.0, rotation: 0, width: 84, height: 50, icon: "📸", color: "#8B5CF6", deletable: true },
+    { id: "elem-torre", type: "landmark", nombre: "Torre del Homenaje", subtitulo: "Fortaleza S. XV", x: 7.5, y: 9.5, rotation: 0, width: 95, height: 95, icon: "🏰", color: "#786D5F", deletable: true },
+    { id: "elem-compass", type: "compass", nombre: "Rosa de los Vientos", subtitulo: "Norte", x: 89.0, y: 12.0, rotation: 0, width: 46, height: 46, icon: "🧭", color: "#C59F4E", deletable: true }
   ];
 
   // Default fallback guest list in case local file:// blocks fetch
@@ -157,6 +168,7 @@
     guests: [],
     tablesMap: new Map(), // key: table number -> { config, guests: [] }
     tableConfigs: [],
+    elements: [],
     maxTableNum: 0,
     selectedGuest: null,
     selectedTable: null,
@@ -209,10 +221,13 @@
     venueSvg: document.getElementById('venue-svg'),
     mapContainer: document.getElementById('map-container'),
     viewportGroup: document.getElementById('map-viewport-group'),
+    elementsLayer: document.getElementById('elements-layer'),
     tablesLayer: document.getElementById('tables-layer'),
     routeLayer: document.getElementById('route-layer'),
     routePath: document.getElementById('route-path'),
     routeBg: document.getElementById('route-bg'),
+    entranceBeaconDot: document.getElementById('entrance-beacon-dot'),
+    entranceBeaconRing: document.getElementById('entrance-beacon-ring'),
     destOverlay: document.getElementById('destination-overlay'),
     destPulse: document.getElementById('dest-pulse'),
     destPin: document.getElementById('dest-pin'),
@@ -287,7 +302,7 @@
   // Initialization & Data Loading
   // ============================================================================
   async function init() {
-    loadSavedTableCoordinates();
+    await loadVenueLayoutConfig();
     bindEvents();
     initPanZoom();
     initConfetti();
@@ -296,18 +311,124 @@
     await loadGuestData();
   }
 
-  function loadSavedTableCoordinates() {
+  async function loadVenueLayoutConfig() {
+    // 1. Check LocalStorage for full venue layout
     try {
-      const saved = localStorage.getItem('castillo_mesas_config');
-      if (saved) {
-        state.tableConfigs = JSON.parse(saved);
+      const savedLayout = localStorage.getItem('castillo_venue_layout');
+      if (savedLayout) {
+        const parsed = JSON.parse(savedLayout);
+        if (parsed.tables && parsed.elements) {
+          state.tableConfigs = parsed.tables;
+          state.elements = parsed.elements;
+          renderVenueElementsOnSvg();
+          return;
+        }
+      }
+
+      // Check legacy table format
+      const savedTables = localStorage.getItem('castillo_mesas_config');
+      if (savedTables) {
+        state.tableConfigs = JSON.parse(savedTables);
+        state.elements = JSON.parse(JSON.stringify(DEFAULT_ELEMENTS_FALLBACK));
+        renderVenueElementsOnSvg();
         return;
       }
     } catch (e) {
       console.warn('Could not read saved coordinates from localStorage', e);
     }
-    // Default config
+
+    // 2. Fetch mesas-config.json
+    try {
+      const res = await fetch('mesas-config.json?v=' + Date.now());
+      if (res.ok) {
+        const json = await res.json();
+        if (Array.isArray(json)) {
+          state.tableConfigs = json;
+          state.elements = JSON.parse(JSON.stringify(DEFAULT_ELEMENTS_FALLBACK));
+        } else if (json.tables && json.elements) {
+          state.tableConfigs = json.tables;
+          state.elements = json.elements;
+        }
+        renderVenueElementsOnSvg();
+        return;
+      }
+    } catch (e) {
+      console.info('Fetch mesas-config.json not available, using defaults');
+    }
+
+    // 3. Fallback to defaults
     state.tableConfigs = JSON.parse(JSON.stringify(CASTILLO_COORDINATES_DEFAULT));
+    state.elements = JSON.parse(JSON.stringify(DEFAULT_ELEMENTS_FALLBACK));
+    renderVenueElementsOnSvg();
+  }
+
+  function renderVenueElementsOnSvg() {
+    if (!dom.elementsLayer) return;
+    dom.elementsLayer.innerHTML = '';
+
+    state.elements.forEach(el => {
+      const cx = (el.x / 100) * SVG_WIDTH;
+      const cy = (el.y / 100) * SVG_HEIGHT;
+      const rot = el.rotation || 0;
+
+      const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      group.setAttribute("class", "svg-venue-element");
+      group.setAttribute("id", `svg-elem-${el.id}`);
+      group.setAttribute("transform", `translate(${cx}, ${cy}) rotate(${rot})`);
+
+      let innerHtml = '';
+      const w = el.width || 80;
+      const h = el.height || 50;
+
+      if (el.type === 'entrance') {
+        innerHtml = `
+          <ellipse cx="0" cy="0" rx="${w/2 + 10}" ry="${h/2 + 8}" fill="#3B82F6" opacity="0.15"/>
+          <rect x="-${w/2}" y="-${h/2}" width="${w}" height="${h}" rx="6" class="elem-box" fill="#1D1A17" stroke="#3B82F6" stroke-width="2.2" filter="url(#table-shadow)"/>
+          <polygon points="-8,-${h/2} 0,-${h/2 - 7} 8,-${h/2}" fill="#3B82F6"/>
+          <text x="0" y="2" font-family="'Cinzel', serif" font-size="10" font-weight="700" fill="#93C5FD" text-anchor="middle">${escapeHtml(el.nombre)}</text>
+          <text x="0" y="${h/2 + 12}" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="600" fill="#60A5FA" text-anchor="middle">${escapeHtml(el.subtitulo || '')}</text>
+        `;
+      } else if (el.type === 'dancefloor') {
+        const r = w / 2;
+        innerHtml = `
+          <circle cx="0" cy="0" r="${r}" class="elem-box" fill="url(#dance-floor-grad)" stroke="#C59F4E" stroke-width="2.2" stroke-dasharray="4 2"/>
+          <circle cx="0" cy="0" r="${r * 0.65}" fill="none" stroke="#A88232" stroke-width="1"/>
+          <text x="0" y="-3" font-size="14" text-anchor="middle">${el.icon || '💃'}</text>
+          <text x="0" y="11" font-family="'Cinzel', serif" font-size="8.5" font-weight="700" fill="#3D342A" text-anchor="middle">${escapeHtml(el.nombre)}</text>
+        `;
+      } else if (el.type === 'compass') {
+        const r = w / 2;
+        innerHtml = `
+          <circle cx="0" cy="0" r="${r}" class="elem-box" fill="#FFFFFF" stroke="#C59F4E" stroke-width="1.5" filter="url(#table-shadow)"/>
+          <polygon points="0,-${r*0.8} ${r*0.22},0 0,-${r*0.18}" fill="#C59F4E"/>
+          <polygon points="0,-${r*0.8} -${r*0.22},0 0,-${r*0.18}" fill="#8C6A24"/>
+          <polygon points="0,${r*0.8} ${r*0.18},0 0,${r*0.18}" fill="#D4CBC0"/>
+          <polygon points="0,${r*0.8} -${r*0.18},0 0,${r*0.18}" fill="#A39788"/>
+          <text x="0" y="-${r + 2}" font-family="'Cinzel', serif" font-size="9" font-weight="800" fill="#8C6A24" text-anchor="middle">N</text>
+          <text x="0" y="${r + 10}" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="700" fill="#786D5F" text-anchor="middle">${escapeHtml(el.nombre)}</text>
+        `;
+      } else if (el.type === 'landmark') {
+        innerHtml = `
+          <rect x="-${w/2}" y="-${h/2}" width="${w}" height="${h}" rx="6" class="elem-box" fill="#786D5F" stroke="#4F463B" stroke-width="3" filter="url(#table-shadow)"/>
+          <rect x="-${w/2 - 6}" y="-${h/2 - 6}" width="${w - 12}" height="${h - 12}" rx="4" fill="#918575" stroke="#63574A" stroke-width="1.5"/>
+          <text x="0" y="-8" font-size="14" text-anchor="middle">${el.icon || '🏰'}</text>
+          <text x="0" y="8" font-family="'Cinzel', serif" font-size="9" font-weight="700" fill="#FFFFFF" text-anchor="middle">${escapeHtml(el.nombre)}</text>
+          <text x="0" y="19" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="600" fill="#FAF5EC" text-anchor="middle">${escapeHtml(el.subtitulo || '')}</text>
+        `;
+      } else {
+        const color = el.color || "#C59F4E";
+        innerHtml = `
+          <rect x="-${w/2}" y="-${h/2}" width="${w}" height="${h}" rx="8" class="elem-box" fill="#FFFFFF" stroke="${color}" stroke-width="2.2" filter="url(#table-shadow)"/>
+          <circle cx="0" cy="-${h/4}" r="11" fill="${color}" opacity="0.12"/>
+          <text x="0" y="-${h/4 - 4}" font-size="13" text-anchor="middle">${el.icon || '✦'}</text>
+          <text x="0" y="${h/6}" font-family="'Cinzel', serif" font-size="8.5" font-weight="700" fill="#1C1917" text-anchor="middle">${escapeHtml(el.nombre)}</text>
+          <text x="0" y="${h/6 + 10}" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="600" fill="#78716C" text-anchor="middle">${escapeHtml(el.subtitulo || '')}</text>
+        `;
+      }
+
+      group.innerHTML = innerHtml;
+      dom.elementsLayer.appendChild(group);
+    });
   }
 
   /**
@@ -657,6 +778,9 @@
     const x = tableConfig.x;
     const y = tableConfig.y;
 
+    const entranceElem = state.elements && state.elements.find(el => el.type === 'entrance');
+    const entranceTitle = entranceElem ? (entranceElem.nombre + (entranceElem.subtitulo ? ` (${entranceElem.subtitulo})` : '')) : 'Arco de Armas (Entrada Principal)';
+
     let sideText = "hacia el centro del patio";
     if (x < 40) sideText = "hacia el ala izquierda (junto a los arcos de la Torre del Homenaje)";
     else if (x > 60) sideText = "hacia el ala derecha (en dirección a la zona de cóctel y Manzanilla)";
@@ -666,7 +790,7 @@
     else if (y < 65) depthText = "en la zona central del patio.";
     else depthText = "a pocos pasos de la Entrada Principal.";
 
-    return `Entra por el <strong class="route-guide-strong">Arco de Armas (Entrada Principal)</strong>, camina recto ${sideText} y encontrarás tu mesa ${depthText}`;
+    return `Entra por <strong class="route-guide-strong">${escapeHtml(entranceTitle)}</strong>, camina recto ${sideText} y encontrarás tu mesa ${depthText}`;
   }
 
   function dismissGuestResult() {
@@ -685,6 +809,7 @@
       const cfg = tableData.config;
       const guestCount = tableData.guests.length;
       const isPresidential = tableNum === 0;
+      const rot = cfg.rotation || 0;
 
       // Convert percentage coordinates into SVG units
       const cx = (cfg.x / 100) * SVG_WIDTH;
@@ -694,7 +819,7 @@
       group.setAttribute("class", `svg-table-group ${state.isOrganizerMode ? 'draggable' : ''}`);
       group.setAttribute("id", `svg-table-${tableNum}`);
       group.setAttribute("data-table-num", tableNum);
-      group.setAttribute("transform", `translate(${cx}, ${cy})`);
+      group.setAttribute("transform", `translate(${cx}, ${cy}) rotate(${rot})`);
       group.setAttribute("tabindex", "0");
       group.setAttribute("role", "button");
       group.setAttribute("aria-label", `Mesa ${tableNum}: ${cfg.nombre}, ${guestCount} comensales`);
@@ -705,7 +830,7 @@
         // Oval / Rectangular Presidential Table
         shapeHtml = `
           <!-- Presidential Table Tablecloth & Rim -->
-          <rect x="-56" y="-22" width="112" height="44" rx="20" class="svg-table-outer" fill="#3D342A" stroke="#C59F4E" stroke-width="2.5" filter="url(#table-shadow)"/>
+          <rect x="-56" y="-22" width="112" height="44" rx="20" class="svg-table-outer elem-box" fill="#3D342A" stroke="#C59F4E" stroke-width="2.5" filter="url(#table-shadow)"/>
           <rect x="-48" y="-16" width="96" height="32" rx="14" class="svg-table-inner" fill="#4A3F33" stroke="#E6CE93" stroke-width="1"/>
           
           <!-- Chairs for Presidential (6 seats) -->
@@ -716,8 +841,8 @@
           <circle cx="-25" cy="28" r="5" class="svg-chair"/>
           <circle cx="25" cy="28" r="5" class="svg-chair"/>
 
-          <text x="0" y="-3" class="svg-table-num" fill="#E6CE93" font-size="12">NOVIOS</text>
-          <text x="0" y="8" class="svg-table-label" fill="#D4AF37" font-size="7">PRESIDENCIA</text>
+          <text x="0" y="-3" class="svg-table-num" fill="#E6CE93" font-size="11">PRESIDENCIA</text>
+          <text x="0" y="8" class="svg-table-label" fill="#D4AF37" font-size="7.5">${escapeHtml(cfg.nombre)}</text>
         `;
       } else {
         // Circular Guest Tables
@@ -739,12 +864,14 @@
           <!-- Radial Chairs -->
           ${chairsSvg}
           <!-- Circular Table -->
-          <circle cx="0" cy="0" r="${tableRadius}" class="svg-table-outer" filter="url(#table-shadow)"/>
+          <circle cx="0" cy="0" r="${tableRadius}" class="svg-table-outer elem-box" filter="url(#table-shadow)"/>
           <circle cx="0" cy="0" r="${tableRadius - 5}" class="svg-table-inner"/>
           <circle cx="0" cy="0" r="14" fill="#FFFFFF" stroke="#C59F4E" stroke-width="1.2"/>
           
           <text x="0" y="0" class="svg-table-num">${tableNum}</text>
           <text x="0" y="19" class="svg-table-label">${guestCount}p</text>
+          <!-- Table custom name label floating below -->
+          <text x="0" y="44" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" fill="#4B453E" text-anchor="middle">${escapeHtml(cfg.nombre)}</text>
         `;
       }
 
@@ -805,9 +932,28 @@
     dom.destPulse.setAttribute('cy', destY);
     dom.destPin.setAttribute('transform', `translate(${destX}, ${destY})`);
 
+    // Determine dynamic entrance coordinates
+    let entrancePt = ENTRANCE_POINT;
+    const entranceElem = state.elements && state.elements.find(el => el.type === 'entrance');
+    if (entranceElem) {
+      entrancePt = {
+        x: (entranceElem.x / 100) * SVG_WIDTH,
+        y: (entranceElem.y / 100) * SVG_HEIGHT
+      };
+    }
+
+    if (dom.entranceBeaconDot) {
+      dom.entranceBeaconDot.setAttribute('cx', entrancePt.x);
+      dom.entranceBeaconDot.setAttribute('cy', entrancePt.y);
+    }
+    if (dom.entranceBeaconRing) {
+      dom.entranceBeaconRing.setAttribute('cx', entrancePt.x);
+      dom.entranceBeaconRing.setAttribute('cy', entrancePt.y);
+    }
+
     // Draw Animated Route Path
     if (state.showRouteLayer) {
-      drawNavigationRoute(ENTRANCE_POINT, { x: destX, y: destY });
+      drawNavigationRoute(entrancePt, { x: destX, y: destY });
     }
 
     // Smooth camera pan to table
@@ -1399,76 +1545,82 @@
       showToast(state.showRouteLayer ? 'Ruta de acceso visible' : 'Ruta oculta', '📍');
     });
 
-    // Organizer toggles
-    dom.btnToggleOrganizer.addEventListener('click', toggleOrganizerMode);
-    dom.btnCloseOrganizer.addEventListener('click', toggleOrganizerMode);
-    dom.footerAdminToggle.addEventListener('click', toggleOrganizerMode);
-    dom.btnCopyJson.addEventListener('click', copyCoordinatesJson);
-    dom.btnSaveLocal.addEventListener('click', saveCoordinatesLocally);
-    dom.btnResetPositions.addEventListener('click', resetCoordinatesToDefault);
+    // Organizer toggles (only if elements exist in DOM)
+    if (dom.btnToggleOrganizer) dom.btnToggleOrganizer.addEventListener('click', toggleOrganizerMode);
+    if (dom.btnCloseOrganizer) dom.btnCloseOrganizer.addEventListener('click', toggleOrganizerMode);
+    if (dom.footerAdminToggle) dom.footerAdminToggle.addEventListener('click', toggleOrganizerMode);
+    if (dom.btnCopyJson) dom.btnCopyJson.addEventListener('click', copyCoordinatesJson);
+    if (dom.btnSaveLocal) dom.btnSaveLocal.addEventListener('click', saveCoordinatesLocally);
+    if (dom.btnResetPositions) dom.btnResetPositions.addEventListener('click', resetCoordinatesToDefault);
 
     // Directory modal
-    dom.btnOpenDirectory.addEventListener('click', openDirectoryModal);
-    dom.btnCloseDirectory.addEventListener('click', closeDirectoryModal);
-    dom.modalDirectory.addEventListener('click', (e) => {
-      if (e.target === dom.modalDirectory) closeDirectoryModal();
-    });
+    if (dom.btnOpenDirectory) dom.btnOpenDirectory.addEventListener('click', openDirectoryModal);
+    if (dom.btnCloseDirectory) dom.btnCloseDirectory.addEventListener('click', closeDirectoryModal);
+    if (dom.modalDirectory) {
+      dom.modalDirectory.addEventListener('click', (e) => {
+        if (e.target === dom.modalDirectory) closeDirectoryModal();
+      });
+    }
 
-    // Upload modal
-    dom.btnOpenUpload.addEventListener('click', openUploadModal);
-    dom.btnCloseUpload.addEventListener('click', closeUploadModal);
-    dom.modalUpload.addEventListener('click', (e) => {
-      if (e.target === dom.modalUpload) closeUploadModal();
-    });
+    // Upload modal (if present)
+    if (dom.btnOpenUpload) dom.btnOpenUpload.addEventListener('click', openUploadModal);
+    if (dom.btnCloseUpload) dom.btnCloseUpload.addEventListener('click', closeUploadModal);
+    if (dom.modalUpload) {
+      dom.modalUpload.addEventListener('click', (e) => {
+        if (e.target === dom.modalUpload) closeUploadModal();
+      });
+    }
 
-    dom.uploadDropzone.addEventListener('click', () => dom.excelFileInput.click());
-    dom.excelFileInput.addEventListener('change', (e) => {
-      if (e.target.files.length > 0) {
-        handleFileSelected(e.target.files[0]);
-      }
-    });
-
-    // Drag & drop on dropzone
-    dom.uploadDropzone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      dom.uploadDropzone.classList.add('dragover');
-    });
-
-    dom.uploadDropzone.addEventListener('dragleave', () => {
-      dom.uploadDropzone.classList.remove('dragover');
-    });
-
-    dom.uploadDropzone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      dom.uploadDropzone.classList.remove('dragover');
-      if (e.dataTransfer.files.length > 0) {
-        handleFileSelected(e.dataTransfer.files[0]);
-      }
-    });
-
-    dom.btnReloadDefault.addEventListener('click', () => {
-      loadGuestData();
-      closeUploadModal();
-    });
-
-    // Global drag and drop: drag any excel anywhere onto the page!
-    window.addEventListener('dragover', (e) => e.preventDefault());
-    window.addEventListener('drop', (e) => {
-      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-        const file = e.dataTransfer.files[0];
-        if (file.name.match(/\.(xlsx|xls|csv|json)$/i)) {
-          e.preventDefault();
-          handleFileSelected(file);
+    if (dom.uploadDropzone && dom.excelFileInput) {
+      dom.uploadDropzone.addEventListener('click', () => dom.excelFileInput.click());
+      dom.excelFileInput.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) {
+          handleFileSelected(e.target.files[0]);
         }
-      }
-    });
+      });
+
+      dom.uploadDropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dom.uploadDropzone.classList.add('dragover');
+      });
+
+      dom.uploadDropzone.addEventListener('dragleave', () => {
+        dom.uploadDropzone.classList.remove('dragover');
+      });
+
+      dom.uploadDropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dom.uploadDropzone.classList.remove('dragover');
+        if (e.dataTransfer.files.length > 0) {
+          handleFileSelected(e.dataTransfer.files[0]);
+        }
+      });
+    }
+
+    if (dom.btnReloadDefault) {
+      dom.btnReloadDefault.addEventListener('click', () => {
+        loadGuestData();
+        closeUploadModal();
+      });
+    }
 
     // Keyboard ESC to close modals / search
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeAutocomplete();
         closeDirectoryModal();
-        closeUploadModal();
+        if (dom.modalUpload) closeUploadModal();
+      }
+    });
+
+    // Real-time synchronization when organizer edits in another tab/window
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'castillo_venue_layout' || e.key === 'castillo_mesas_config') {
+        loadVenueLayoutConfig().then(() => {
+          if (state.guests && state.guests.length > 0) {
+            processGuestData(state.guests);
+          }
+        });
       }
     });
   }
