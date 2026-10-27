@@ -1,75 +1,138 @@
 /* ==========================================================================
    BODA REAL EN EL CASTILLO DE SANTIAGO - SANLÚCAR DE BARRAMEDA
-   Design System & Style Architecture
-   Aesthetic: Refined Andalusian Fortress Luxury, Warm Stone & Soft Champagne
+   Enlace Matrimonial de Ester Muñoz & Samuel Madrid
+   
+   Aesthetic Architecture:
+   - Estilo: Elegante, Romántico y Vintage
+   - Paleta: Champagne, Marfil, Beige y Detalles Dorados Sutiles
+   - Tipografía: Cormorant Garamond (Clásica), Pinyon Script (Caligrafía Delicada),
+                 Cinzel (Inscripciones Romanas) y Plus Jakarta Sans (Cuerpo legible)
+   - Lujo Discreto: Quiet Luxury, Marcos Franceses con Doble Filete Dorado,
+                    Textura de Papel Algodón / Lino Nupcial, Sombra Difusa Cálida.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Alex+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Color Palette: Warm Castilian Stone, Champagne Gold & Antique Bronze */
-  --stone-950: #141210;
-  --stone-900: #1D1A17;
-  --stone-850: #25221E;
-  --stone-800: #332F2A;
-  --stone-700: #4B453E;
-  --stone-600: #6B635A;
-  --stone-500: #8C8377;
-  --stone-400: #B3A99B;
-  --stone-300: #D4CBC0;
-  --stone-200: #E6E0D6;
-  --stone-100: #F4F0E8;
-  --stone-50:  #FAF8F4;
-  --stone-white: #FFFEFC;
+  /* ========================================================================
+     Paleta de Color Nupcial: Marfil, Champagne, Beige & Oro Envejecido
+     ======================================================================== */
+  
+  /* Tonos Marfil (Ivory Cardstock & Pure Linen) */
+  --ivory-white:   #FFFDF9;
+  --ivory-50:      #FDFBF7;
+  --ivory-100:     #FAF6EE;
+  --ivory-200:     #F5EFE3;
+  --ivory-300:     #EFE6D5;
 
-  /* Royal Champagne & Andalusian Gold */
-  --gold-700: #8C6A24;
-  --gold-600: #A88232;
-  --gold-500: #C59F4E;
-  --gold-400: #D8B568;
-  --gold-300: #E7CC8E;
-  --gold-200: #F3E3B9;
-  --gold-100: #FBF4E3;
-  --gold-glow: rgba(197, 159, 78, 0.35);
+  /* Tonos Champagne (Warm Champagne & Soft Silk) */
+  --champagne-50:  #FAF5EB;
+  --champagne-100: #F4EBD9;
+  --champagne-200: #EDE0C7;
+  --champagne-300: #E4D3B4;
+  --champagne-400: #D5BF9A;
+  --champagne-500: #C2AA83;
 
-  /* Accents */
-  --wine-800: #571626;
-  --wine-600: #7E2037;
-  --wine-100: #F7EAEF;
-  --emerald-600: #236B4D;
-  --emerald-100: #E9F4EE;
-  --amber-500: #D97706;
+  /* Tonos Beige (Lino Natural & Piedra Arenisca Cálida) */
+  --beige-50:      #FBF9F4;
+  --beige-100:     #F6F0E4;
+  --beige-200:     #ECE3D2;
+  --beige-300:     #DDD1BD;
+  --beige-400:     #C7B79E;
+  --beige-500:     #B09F85;
 
-  /* Typography */
-  --font-serif: 'Cinzel', Georgia, 'Times New Roman', serif;
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-script: 'Alex Brush', cursive;
+  /* Detalles Dorados Sutiles (Quiet Luxury Antique Gold) */
+  --gold-antique:   #B89248;
+  --gold-champagne: #C5A059;
+  --gold-soft:      #D8B873;
+  --gold-pale:      #EBD7A7;
+  --gold-shimmer:   #FAF1DB;
+  
+  /* Bordes & Filetes Dobles */
+  --gold-border:        rgba(184, 146, 72, 0.32);
+  --gold-border-soft:   rgba(184, 146, 72, 0.16);
+  --gold-border-strong: rgba(184, 146, 72, 0.55);
+  --gold-glow:          rgba(197, 160, 89, 0.22);
+  --gold-glow-soft:     rgba(197, 160, 89, 0.12);
 
-  /* Elevation & Shadows */
-  --shadow-sm: 0 2px 6px rgba(29, 26, 23, 0.05);
-  --shadow-md: 0 6px 18px rgba(29, 26, 23, 0.08), 0 2px 6px rgba(197, 159, 78, 0.04);
-  --shadow-lg: 0 16px 36px rgba(29, 26, 23, 0.12), 0 4px 12px rgba(197, 159, 78, 0.08);
-  --shadow-xl: 0 24px 50px rgba(29, 26, 23, 0.18), 0 6px 20px rgba(197, 159, 78, 0.12);
-  --shadow-gold: 0 0 24px rgba(197, 159, 78, 0.45);
+  /* Texto y Contrastes Vintage (Tinta Espreso Envejecida & Avellana) */
+  --text-primary:   #2C241E; /* Espreso profundo, nunca negro puro */
+  --text-secondary: #584D42; /* Avellana tostada */
+  --text-muted:     #7F7265; /* Lino seco */
+  --text-delicate:  #9E9081; /* Fieltro suave */
+  --text-light:     #BDB0A2;
 
-  /* Radii */
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --radius-xl: 26px;
+  /* Acentos Románticos Vintage Moteados */
+  --wine-vintage:    #7D2C3E;
+  --wine-soft:       #F7EBEF;
+  --sage-vintage:    #4D6E57;
+  --sage-soft:       #EEF4F0;
+  --rose-vintage:    #8E5B70;
+  --rose-soft:       #F9EFF3;
+  --slate-vintage:   #50677B;
+  --slate-soft:      #EDF2F6;
+
+  /* Compatibilidad con variables legacy */
+  --stone-950: #1D1814;
+  --stone-900: #2C241E;
+  --stone-850: #383028;
+  --stone-800: #463D34;
+  --stone-700: #5C5248;
+  --stone-600: #766B5F;
+  --stone-500: #918577;
+  --stone-400: #B2A696;
+  --stone-300: #D3C7B6;
+  --stone-200: #E8DFD1;
+  --stone-100: #F4EDE0;
+  --stone-50:  #FAF6ED;
+  --stone-white: #FFFDF9;
+
+  --gold-700: #7A5B1E;
+  --gold-600: #9B782E;
+  --gold-500: #C5A059;
+  --gold-400: #D8B873;
+  --gold-300: #EBD7A7;
+  --gold-200: #F5E8C8;
+  --gold-100: #FAF3E1;
+
+  /* ========================================================================
+     Tipografías
+     ======================================================================== */
+  --font-serif:   'Cormorant Garamond', Garamond, Georgia, serif;
+  --font-script:  'Pinyon Script', 'Alex Brush', cursive;
+  --font-classic: 'Cinzel', serif;
+  --font-sans:    'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* ========================================================================
+     Sombras Nupciales Difusas (Efecto Papel en Relieve)
+     ======================================================================== */
+  --shadow-subtle: 0 2px 8px rgba(70, 55, 40, 0.04);
+  --shadow-sm:     0 3px 12px rgba(70, 55, 40, 0.05), 0 1px 3px rgba(70, 55, 40, 0.02);
+  --shadow-md:     0 8px 24px rgba(70, 55, 40, 0.07), 0 2px 8px rgba(184, 146, 72, 0.05);
+  --shadow-lg:     0 16px 40px rgba(70, 55, 40, 0.09), 0 4px 14px rgba(184, 146, 72, 0.08);
+  --shadow-xl:     0 24px 55px rgba(70, 55, 40, 0.12), 0 6px 20px rgba(184, 146, 72, 0.1);
+  --shadow-gold:   0 0 24px rgba(197, 160, 89, 0.35);
+
+  /* Radios */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   18px;
+  --radius-xl:   26px;
   --radius-full: 9999px;
 
-  /* Transitions */
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* Transiciones Suaves */
+  --transition-fast:   160ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 260ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 420ms cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Layout */
-  --header-height: 72px;
-  --container-max: 1200px;
+  /* Estructura */
+  --header-height: 76px;
+  --container-max: 1180px;
 }
 
-/* Base Reset & Box Sizing */
+/* ==========================================================================
+   Reset & Estilos Base
+   ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -84,12 +147,12 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--stone-100);
+  background-color: var(--champagne-50);
   background-image: 
-    radial-gradient(circle at 10% 20%, rgba(197, 159, 78, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(197, 159, 78, 0.06) 0%, transparent 45%),
-    linear-gradient(180deg, #F9F6F0 0%, #EDE6DC 100%);
-  color: var(--stone-800);
+    radial-gradient(circle at 10% 15%, rgba(212, 175, 55, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 90% 85%, rgba(197, 160, 89, 0.06) 0%, transparent 50%),
+    linear-gradient(180deg, #FDFBF7 0%, #FAF5EB 25%, #F4ECE0 65%, #ECE2D3 100%);
+  color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
@@ -98,7 +161,7 @@ body {
   position: relative;
 }
 
-/* Subtle architectural stone texture overlay */
+/* Textura sutil de papel artesanal / lino verjurado */
 body::before {
   content: "";
   position: fixed;
@@ -106,14 +169,17 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: radial-gradient(var(--stone-300) 0.75px, transparent 0.75px);
-  background-size: 24px 24px;
-  opacity: 0.22;
+  background-image: 
+    radial-gradient(rgba(184, 146, 72, 0.12) 0.65px, transparent 0.65px),
+    radial-gradient(rgba(120, 95, 65, 0.08) 0.65px, transparent 0.65px);
+  background-size: 20px 20px, 40px 40px;
+  background-position: 0 0, 10px 10px;
+  opacity: 0.32;
   pointer-events: none;
   z-index: 0;
 }
 
-/* Confetti Canvas */
+/* Canvas de Confeti Nupcial Dorado */
 #confetti-canvas {
   position: fixed;
   top: 0;
@@ -125,24 +191,24 @@ body::before {
 }
 
 /* ==========================================================================
-   Header & Brand Monogram
+   Cabecera Superior & Monograma Romántico (Sello de Lujo)
    ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(250, 248, 244, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(197, 159, 78, 0.28);
-  box-shadow: var(--shadow-sm);
+  background: rgba(253, 251, 247, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--gold-border);
+  box-shadow: 0 2px 14px rgba(70, 55, 40, 0.04);
   transition: all var(--transition-normal);
 }
 
 .header-container {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0.65rem 1.25rem;
+  padding: 0.75rem 1.4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -152,21 +218,22 @@ body::before {
 .brand-wrapper {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.9rem;
   text-decoration: none;
   color: inherit;
 }
 
+/* Sello de lacre marfil con relieve dorado */
 .brand-crest {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   flex-shrink: 0;
-  filter: drop-shadow(0 2px 4px rgba(197, 159, 78, 0.3));
+  filter: drop-shadow(0 3px 6px rgba(184, 146, 72, 0.25));
   transition: transform var(--transition-smooth);
 }
 
 .brand-wrapper:hover .brand-crest {
-  transform: scale(1.06) rotate(2deg);
+  transform: scale(1.05) rotate(2deg);
 }
 
 .brand-text {
@@ -176,34 +243,35 @@ body::before {
 
 .brand-subtitle-script {
   font-family: var(--font-script);
-  font-size: 1.15rem;
-  color: var(--gold-600);
-  line-height: 1;
+  font-size: 1.55rem;
+  color: var(--gold-antique);
+  line-height: 1.05;
   letter-spacing: 0.5px;
 }
 
 .brand-title {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: var(--stone-900);
-  letter-spacing: 1.5px;
+  color: var(--text-primary);
+  letter-spacing: 2px;
   text-transform: uppercase;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .brand-venue {
-  font-size: 0.72rem;
+  font-family: var(--font-classic);
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--stone-600);
+  letter-spacing: 1.2px;
+  color: var(--text-muted);
   text-transform: uppercase;
 }
 
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
 .btn-icon {
@@ -213,114 +281,138 @@ body::before {
   width: 40px;
   height: 40px;
   border-radius: var(--radius-full);
-  border: 1px solid var(--stone-300);
-  background: var(--stone-white);
-  color: var(--stone-700);
+  border: 1px solid var(--gold-border);
+  background: var(--ivory-50);
+  color: var(--text-secondary);
   cursor: pointer;
   transition: all var(--transition-fast);
+  box-shadow: var(--shadow-subtle);
 }
 
 .btn-icon:hover {
-  background: var(--gold-100);
-  border-color: var(--gold-500);
-  color: var(--gold-700);
+  background: var(--champagne-100);
+  border-color: var(--gold-champagne);
+  color: var(--gold-antique);
   transform: translateY(-1px);
 }
 
+/* Botón con estilo de tarjeta de papelería nupcial */
 .btn-outline {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.52rem 1.15rem;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(197, 159, 78, 0.45);
-  background: var(--stone-white);
-  color: var(--stone-800);
+  border: 1px solid var(--gold-border);
+  background: var(--ivory-50);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.5px;
   cursor: pointer;
   transition: all var(--transition-fast);
+  box-shadow: 0 1px 4px rgba(70, 55, 40, 0.04);
 }
 
 .btn-outline:hover {
-  background: var(--gold-500);
-  color: #fff;
-  border-color: var(--gold-600);
-  box-shadow: 0 4px 12px var(--gold-glow);
+  background: linear-gradient(135deg, #FBF4E4 0%, #F5E8C8 100%);
+  border-color: var(--gold-champagne);
+  color: var(--gold-700);
+  box-shadow: 0 3px 12px var(--gold-glow);
+  transform: translateY(-1px);
 }
 
 /* ==========================================================================
-   Hero Section & Welcome Callout
+   Hero Section: Estética Atemporal & Romántica
    ========================================================================== */
 .hero-section {
   position: relative;
   max-width: var(--container-max);
-  margin: 1.5rem auto 1rem;
+  margin: 1.8rem auto 1.2rem;
   padding: 0 1.25rem;
   text-align: center;
+}
+
+/* Adornos y filigranas florales vintage */
+.hero-romantic-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-script);
+  font-size: 1.65rem;
+  color: var(--gold-antique);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+  opacity: 0.95;
 }
 
 .hero-ornament {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
+  gap: 0.85rem;
+  margin-bottom: 0.65rem;
 }
 
 .hero-ornament-line {
-  width: 60px;
+  width: 70px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+  background: linear-gradient(90deg, transparent, var(--gold-champagne), transparent);
 }
 
 .hero-ornament-icon {
-  color: var(--gold-500);
-  font-size: 1rem;
+  color: var(--gold-antique);
+  font-size: 0.9rem;
+  filter: drop-shadow(0 1px 2px rgba(184, 146, 72, 0.2));
 }
 
 .hero-date-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.9rem;
-  background: rgba(197, 159, 78, 0.12);
-  border: 1px solid rgba(197, 159, 78, 0.3);
+  gap: 0.5rem;
+  padding: 0.38rem 1.15rem;
+  background: var(--champagne-100);
+  border: 1px solid var(--gold-border);
   border-radius: var(--radius-full);
-  font-size: 0.78rem;
+  font-family: var(--font-classic);
+  font-size: 0.74rem;
   font-weight: 600;
-  color: var(--gold-700);
-  letter-spacing: 1px;
+  color: var(--gold-antique);
+  letter-spacing: 1.4px;
   text-transform: uppercase;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.6);
 }
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 700;
-  color: var(--stone-950);
-  letter-spacing: 2px;
-  line-height: 1.2;
-  margin-bottom: 0.5rem;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 1.5px;
+  line-height: 1.15;
+  margin-bottom: 0.65rem;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .hero-subtitle {
-  font-family: var(--font-sans);
-  font-size: clamp(0.95rem, 2vw, 1.15rem);
-  color: var(--stone-600);
-  max-width: 640px;
-  margin: 0 auto 1.5rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 620px;
+  margin: 0 auto 1.75rem;
   font-weight: 400;
+  line-height: 1.6;
 }
 
 /* ==========================================================================
-   Search Module: Predictive / Autocomplete Bar
+   Buscador Predictivo: Tarjeta de Sobre Marfil / Papelería
    ========================================================================== */
 .search-container {
-  max-width: 680px;
-  margin: 0 auto 1.5rem;
+  max-width: 660px;
+  margin: 0 auto 1.8rem;
   position: relative;
   z-index: 40;
 }
@@ -329,23 +421,26 @@ body::before {
   position: relative;
   display: flex;
   align-items: center;
-  background: var(--stone-white);
-  border: 1.5px solid var(--stone-300);
+  background: var(--ivory-white);
+  border: 1px solid var(--gold-border-strong);
+  outline: 1px solid var(--gold-border-soft);
+  outline-offset: -4px;
   border-radius: var(--radius-full);
-  padding: 0.4rem 0.6rem 0.4rem 1.25rem;
-  box-shadow: var(--shadow-md);
+  padding: 0.45rem 0.75rem 0.45rem 1.4rem;
+  box-shadow: var(--shadow-md), inset 0 1px 3px rgba(255, 255, 255, 0.9);
   transition: all var(--transition-normal);
 }
 
 .search-box-wrapper:focus-within {
-  border-color: var(--gold-500);
+  border-color: var(--gold-champagne);
   box-shadow: 0 0 0 4px var(--gold-glow), var(--shadow-lg);
   transform: translateY(-1px);
+  background: #FFFFFF;
 }
 
 .search-icon {
-  color: var(--gold-600);
-  margin-right: 0.75rem;
+  color: var(--gold-antique);
+  margin-right: 0.85rem;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -357,21 +452,24 @@ body::before {
   outline: none;
   background: transparent;
   font-family: var(--font-sans);
-  font-size: 1.05rem;
-  color: var(--stone-900);
+  font-size: 1.02rem;
+  color: var(--text-primary);
   font-weight: 500;
-  padding: 0.5rem 0;
+  padding: 0.55rem 0;
 }
 
 .search-input::placeholder {
-  color: var(--stone-400);
+  color: var(--text-delicate);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
   font-weight: 400;
 }
 
 .search-clear-btn {
   background: transparent;
   border: none;
-  color: var(--stone-400);
+  color: var(--text-delicate);
   cursor: pointer;
   padding: 0.4rem;
   border-radius: var(--radius-full);
@@ -382,7 +480,7 @@ body::before {
 }
 
 .search-clear-btn:hover {
-  color: var(--stone-800);
+  color: var(--text-primary);
 }
 
 .search-clear-btn.active {
@@ -390,33 +488,35 @@ body::before {
 }
 
 .search-badge-count {
-  font-size: 0.75rem;
+  font-family: var(--font-classic);
+  font-size: 0.72rem;
   font-weight: 700;
-  background: var(--gold-100);
-  color: var(--gold-700);
-  border: 1px solid var(--gold-300);
+  background: var(--champagne-100);
+  color: var(--gold-antique);
+  border: 1px solid var(--gold-border);
   border-radius: var(--radius-full);
-  padding: 0.25rem 0.7rem;
+  padding: 0.3rem 0.8rem;
   margin-left: 0.5rem;
   white-space: nowrap;
+  letter-spacing: 0.8px;
 }
 
-/* Autocomplete Dropdown List */
+/* Desplegable de Autocompletado */
 .autocomplete-dropdown {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 10px);
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(197, 159, 78, 0.35);
+  background: rgba(255, 253, 249, 0.98);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--gold-border-strong);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xl);
   max-height: 380px;
   overflow-y: auto;
   z-index: 50;
   display: none;
-  animation: dropSlideDown 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  animation: dropSlideDown 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .autocomplete-dropdown.active {
@@ -435,13 +535,13 @@ body::before {
 }
 
 .autocomplete-item {
-  padding: 0.85rem 1.25rem;
+  padding: 0.9rem 1.4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
   cursor: pointer;
-  border-bottom: 1px solid var(--stone-100);
+  border-bottom: 1px solid rgba(221, 209, 189, 0.35);
   transition: all var(--transition-fast);
 }
 
@@ -451,14 +551,15 @@ body::before {
 
 .autocomplete-item:hover,
 .autocomplete-item.highlighted {
-  background: var(--gold-100);
-  padding-left: 1.5rem;
+  background: var(--champagne-100);
+  padding-left: 1.65rem;
 }
 
 .autocomplete-item-name {
-  font-size: 0.95rem;
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
   font-weight: 600;
-  color: var(--stone-900);
+  color: var(--text-primary);
 }
 
 .autocomplete-item-match {
@@ -466,45 +567,49 @@ body::before {
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;
+  text-decoration-color: var(--gold-champagne);
 }
 
 .autocomplete-item-table {
+  font-family: var(--font-sans);
   font-size: 0.78rem;
-  font-weight: 700;
-  padding: 0.3rem 0.75rem;
+  font-weight: 600;
+  padding: 0.32rem 0.85rem;
   border-radius: var(--radius-full);
-  background: var(--stone-white);
-  border: 1px solid var(--stone-300);
-  color: var(--stone-700);
+  background: var(--ivory-50);
+  border: 1px solid var(--gold-border);
+  color: var(--text-secondary);
   white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
 }
 
 .autocomplete-item:hover .autocomplete-item-table,
 .autocomplete-item.highlighted .autocomplete-item-table {
-  background: var(--gold-500);
-  color: #fff;
-  border-color: var(--gold-600);
+  background: linear-gradient(135deg, #FBF4E4 0%, #F5E8C8 100%);
+  color: var(--gold-700);
+  border-color: var(--gold-champagne);
 }
 
 .autocomplete-empty {
-  padding: 1.5rem;
+  padding: 1.6rem;
   text-align: center;
-  color: var(--stone-500);
-  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-style: italic;
 }
 
 /* ==========================================================================
-   Guest Result Card (Highlight on selection)
+   Ficha Nupcial del Invitado: Estilo Invitación Vintage
    ========================================================================== */
 .guest-result-wrapper {
   max-width: 820px;
-  margin: 0 auto 1.75rem;
+  margin: 0 auto 2.2rem;
   padding: 0 1.25rem;
   display: none;
-  animation: cardFadeUp 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  animation: cardFadeUp 380ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .guest-result-wrapper.active {
@@ -514,7 +619,7 @@ body::before {
 @keyframes cardFadeUp {
   from {
     opacity: 0;
-    transform: translateY(14px) scale(0.98);
+    transform: translateY(16px) scale(0.98);
   }
   to {
     opacity: 1;
@@ -523,23 +628,36 @@ body::before {
 }
 
 .guest-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(251, 246, 237, 0.95) 100%);
-  border: 1.5px solid var(--gold-400);
+  background: var(--ivory-white);
+  border: 1px solid var(--gold-border-strong);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg), 0 0 20px rgba(197, 159, 78, 0.15);
+  box-shadow: var(--shadow-lg), 0 0 30px rgba(197, 160, 89, 0.12);
   overflow: hidden;
   position: relative;
 }
 
+/* Doble filete interior de papelería clásica */
+.guest-card::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid var(--gold-border-soft);
+  border-radius: calc(var(--radius-xl) - 4px);
+  pointer-events: none;
+}
+
+/* Cabecera en tonos champagne y marfil (nunca negra) */
 .guest-card-header {
-  background: linear-gradient(90deg, var(--stone-900) 0%, var(--stone-850) 100%);
-  color: #fff;
-  padding: 1.25rem 1.5rem;
+  background: linear-gradient(180deg, #FAF4E8 0%, #F4EBDA 100%);
+  color: var(--text-primary);
+  padding: 1.35rem 1.65rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  border-bottom: 2px solid var(--gold-500);
+  border-bottom: 1px solid var(--gold-border);
+  position: relative;
+  z-index: 1;
 }
 
 .guest-card-greeting {
@@ -549,56 +667,62 @@ body::before {
 
 .guest-welcome-tag {
   font-family: var(--font-script);
-  font-size: 1.35rem;
-  color: var(--gold-300);
-  line-height: 1;
+  font-size: 1.75rem;
+  color: var(--gold-antique);
+  line-height: 1.1;
 }
 
 .guest-name-title {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #fff;
+  color: var(--text-primary);
+  line-height: 1.2;
 }
 
 .guest-dismiss-btn {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  width: 32px;
-  height: 32px;
+  background: rgba(184, 146, 72, 0.12);
+  border: 1px solid var(--gold-border);
+  color: var(--text-secondary);
+  width: 34px;
+  height: 34px;
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .guest-dismiss-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--champagne-200);
+  color: var(--text-primary);
+  transform: scale(1.05);
 }
 
 .guest-card-body {
-  padding: 1.5rem;
+  padding: 1.65rem;
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 1.5rem;
+  grid-template-columns: 230px 1fr;
+  gap: 1.65rem;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {
   .guest-card-body {
     grid-template-columns: 1fr;
+    padding: 1.25rem;
   }
 }
 
-/* Big Table Badge */
+/* Tarjeta Destacada de Mesa (Estilo Placa Nupcial) */
 .table-highlight-badge {
-  background: var(--stone-white);
-  border: 1.5px solid var(--gold-300);
+  background: linear-gradient(180deg, #FDFBF7 0%, #F9F3E8 100%);
+  border: 1px solid var(--gold-border-strong);
   border-radius: var(--radius-lg);
-  padding: 1.5rem 1rem;
+  padding: 1.65rem 1.15rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -609,60 +733,77 @@ body::before {
   overflow: hidden;
 }
 
+/* Doble filete interior de la placa de mesa */
+.table-highlight-badge::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--gold-border-soft);
+  border-radius: calc(var(--radius-lg) - 3px);
+  pointer-events: none;
+}
+
 .table-highlight-badge::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, var(--gold-400), var(--gold-600));
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold-soft), var(--gold-antique), var(--gold-soft));
 }
 
 .badge-table-label {
-  font-family: var(--font-serif);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--gold-700);
-  letter-spacing: 1.5px;
+  font-family: var(--font-classic);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--gold-antique);
+  letter-spacing: 1.8px;
   text-transform: uppercase;
+  margin-bottom: 0.2rem;
 }
 
 .badge-table-num {
   font-family: var(--font-serif);
-  font-size: 3.2rem;
-  font-weight: 800;
-  color: var(--stone-900);
+  font-size: 3.6rem;
+  font-weight: 600;
+  color: var(--text-primary);
   line-height: 1;
-  margin: 0.25rem 0;
+  margin: 0.35rem 0;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
 }
 
 .badge-table-num.presidential {
   font-size: 2.2rem;
-  color: var(--gold-600);
+  color: var(--gold-700);
 }
 
 .badge-table-theme {
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--stone-700);
-  margin-top: 0.25rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
 }
 
 .badge-table-desc {
+  font-family: var(--font-sans);
   font-size: 0.75rem;
-  color: var(--stone-500);
-  margin-top: 0.25rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+  line-height: 1.4;
 }
 
 .badge-action-btn {
-  margin-top: 1rem;
+  margin-top: 1.15rem;
   width: 100%;
-  padding: 0.55rem 0.85rem;
+  padding: 0.6rem 0.95rem;
   border-radius: var(--radius-full);
-  border: none;
-  background: var(--gold-500);
-  color: #fff;
+  border: 1px solid var(--gold-border);
+  background: linear-gradient(135deg, #FBF4E4 0%, #F5E8C8 100%);
+  color: var(--gold-700);
+  font-family: var(--font-sans);
   font-weight: 600;
   font-size: 0.82rem;
   letter-spacing: 0.5px;
@@ -670,78 +811,82 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   transition: all var(--transition-fast);
-  box-shadow: 0 4px 10px var(--gold-glow);
+  box-shadow: 0 2px 8px var(--gold-glow);
 }
 
 .badge-action-btn:hover {
-  background: var(--gold-600);
+  background: linear-gradient(135deg, #F5E8C8 0%, #EBD7A7 100%);
+  border-color: var(--gold-champagne);
   transform: translateY(-1px);
 }
 
-/* Companions & Route details */
+/* Columna de Acompañantes y Orientación */
 .guest-details-column {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.35rem;
 }
 
 .companions-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.65rem;
 }
 
 .companions-title {
   font-family: var(--font-serif);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--stone-900);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
   letter-spacing: 0.5px;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
 }
 
 .companions-count {
-  font-size: 0.75rem;
+  font-family: var(--font-classic);
+  font-size: 0.72rem;
   font-weight: 700;
-  color: var(--stone-600);
-  background: var(--stone-200);
-  padding: 0.15rem 0.5rem;
+  color: var(--gold-antique);
+  background: var(--champagne-100);
+  border: 1px solid var(--gold-border);
+  padding: 0.2rem 0.65rem;
   border-radius: var(--radius-full);
 }
 
 .companions-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.5rem;
 }
 
 .companion-chip {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.35rem 0.75rem;
-  background: var(--stone-white);
-  border: 1px solid var(--stone-300);
+  padding: 0.4rem 0.85rem;
+  background: var(--ivory-50);
+  border: 1px solid var(--gold-border);
   border-radius: var(--radius-full);
   font-size: 0.82rem;
-  color: var(--stone-800);
+  color: var(--text-secondary);
   font-weight: 500;
   transition: all var(--transition-fast);
 }
 
 .companion-chip:hover {
-  border-color: var(--gold-400);
-  background: var(--gold-100);
+  border-color: var(--gold-champagne);
+  background: var(--champagne-100);
+  color: var(--text-primary);
 }
 
 .companion-chip.is-current {
-  background: var(--gold-100);
-  border-color: var(--gold-500);
+  background: linear-gradient(135deg, #FAF3E1 0%, #F5E8C8 100%);
+  border-color: var(--gold-champagne);
   color: var(--gold-700);
   font-weight: 700;
 }
@@ -749,44 +894,46 @@ body::before {
 .companion-chip.is-current::after {
   content: "(Tú)";
   font-size: 0.7rem;
-  font-weight: 600;
-  opacity: 0.85;
+  font-weight: 700;
+  opacity: 0.9;
+  margin-left: 0.15rem;
 }
 
+/* Guía de Acceso con estilo pergamino */
 .route-guide-box {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(197, 159, 78, 0.3);
+  background: linear-gradient(180deg, #FBF9F4 0%, #F6EFE3 100%);
+  border: 1px solid var(--gold-border);
   border-radius: var(--radius-md);
-  padding: 0.85rem 1rem;
+  padding: 0.95rem 1.15rem;
   display: flex;
   align-items: flex-start;
-  gap: 0.85rem;
+  gap: 0.95rem;
 }
 
 .route-guide-icon {
-  color: var(--gold-600);
-  font-size: 1.25rem;
+  color: var(--gold-antique);
+  font-size: 1.35rem;
   line-height: 1;
-  padding-top: 0.1rem;
+  padding-top: 0.15rem;
 }
 
 .route-guide-text {
-  font-size: 0.84rem;
-  color: var(--stone-700);
-  line-height: 1.5;
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
 }
 
 .route-guide-strong {
   font-weight: 700;
-  color: var(--stone-900);
+  color: var(--text-primary);
 }
 
 /* ==========================================================================
-   Interactive Map Layout (Patio de Armas - Castillo de Santiago)
+   Plano Interactivo del Recinto (Patio de Armas)
    ========================================================================== */
 .map-section {
   max-width: var(--container-max);
-  margin: 0 auto 3rem;
+  margin: 0 auto 3.5rem;
   padding: 0 1.25rem;
   width: 100%;
 }
@@ -797,7 +944,7 @@ body::before {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 0.85rem;
+  margin-bottom: 1rem;
   padding: 0 0.25rem;
 }
 
@@ -808,18 +955,20 @@ body::before {
 
 .map-title {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--stone-900);
-  letter-spacing: 1px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.8px;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
 }
 
 .map-subtitle {
-  font-size: 0.82rem;
-  color: var(--stone-500);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--text-muted);
 }
 
 .map-toolbar {
@@ -828,13 +977,13 @@ body::before {
   gap: 0.5rem;
 }
 
-/* Map Viewport & Container */
+/* Lienzo del Plano: Arenisca Suave, Marfil y Borde Champagne */
 .map-canvas-container {
   position: relative;
-  background: #E8E1D5;
-  border: 2px solid var(--stone-400);
+  background: #EFE8DC;
+  border: 2px solid var(--beige-400);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg), inset 0 0 40px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-lg), inset 0 0 50px rgba(110, 85, 55, 0.08);
   overflow: hidden;
   height: 600px;
   user-select: none;
@@ -860,14 +1009,14 @@ body::before {
   cursor: grabbing;
 }
 
-/* Floating Map Controls */
+/* Controles Flotantes del Mapa en Marfil Suave */
 .map-floating-controls {
   position: absolute;
   bottom: 1.25rem;
   right: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.5rem;
   z-index: 25;
 }
 
@@ -875,10 +1024,10 @@ body::before {
   width: 42px;
   height: 42px;
   border-radius: var(--radius-md);
-  border: 1px solid var(--stone-300);
-  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--gold-border);
+  background: rgba(255, 253, 249, 0.94);
   backdrop-filter: blur(8px);
-  color: var(--stone-800);
+  color: var(--text-primary);
   box-shadow: var(--shadow-md);
   cursor: pointer;
   display: flex;
@@ -890,9 +1039,9 @@ body::before {
 }
 
 .floating-btn:hover {
-  background: var(--gold-100);
-  border-color: var(--gold-500);
-  color: var(--gold-700);
+  background: var(--champagne-100);
+  border-color: var(--gold-champagne);
+  color: var(--gold-antique);
   transform: scale(1.05);
 }
 
@@ -900,7 +1049,7 @@ body::before {
   transform: scale(0.95);
 }
 
-/* Floating Compass & Scale */
+/* Placas Informativas y Leyenda */
 .map-floating-info {
   position: absolute;
   top: 1rem;
@@ -913,38 +1062,40 @@ body::before {
 }
 
 .map-badge-info {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 253, 249, 0.94);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(197, 159, 78, 0.35);
+  border: 1px solid var(--gold-border);
   border-radius: var(--radius-full);
-  padding: 0.35rem 0.85rem;
-  font-size: 0.75rem;
+  padding: 0.38rem 0.95rem;
+  font-family: var(--font-classic);
+  font-size: 0.72rem;
   font-weight: 600;
-  color: var(--stone-700);
+  color: var(--text-secondary);
+  letter-spacing: 0.8px;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  box-shadow: var(--shadow-sm);
+  gap: 0.45rem;
+  box-shadow: var(--shadow-subtle);
 }
 
-/* Floating Legend Bar */
 .map-legend-bar {
   position: absolute;
   bottom: 1rem;
   left: 1rem;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 253, 249, 0.94);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(197, 159, 78, 0.3);
+  border: 1px solid var(--gold-border);
   border-radius: var(--radius-md);
-  padding: 0.45rem 0.85rem;
+  padding: 0.5rem 0.95rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  font-size: 0.72rem;
+  gap: 1.1rem;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
   font-weight: 600;
-  color: var(--stone-700);
+  color: var(--text-secondary);
   z-index: 20;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-subtle);
 }
 
 @media (max-width: 600px) {
@@ -956,149 +1107,47 @@ body::before {
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
 }
 
 .legend-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .legend-dot.entrance {
-  background: #3B82F6;
+  background: var(--slate-vintage);
 }
 
 .legend-dot.table {
-  background: #C59F4E;
+  background: var(--gold-champagne);
 }
 
 .legend-dot.presidential {
-  background: #8C6A24;
+  background: var(--gold-antique);
 }
 
 .legend-dot.amenities {
-  background: #10B981;
-}
-
-/* Organizer Floating Banner / Bar */
-.organizer-banner {
-  background: linear-gradient(90deg, #2A241E 0%, #3B332B 100%);
-  color: #fff;
-  border-radius: var(--radius-lg);
-  padding: 0.9rem 1.25rem;
-  margin-bottom: 1rem;
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  border: 1px solid var(--gold-500);
-  box-shadow: var(--shadow-md);
-  animation: bannerSlide 250ms ease;
-}
-
-.organizer-banner.active {
-  display: flex;
-}
-
-@keyframes bannerSlide {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.organizer-banner-text {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.88rem;
-}
-
-.organizer-banner-badge {
-  background: var(--gold-500);
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 0.2rem 0.55rem;
-  border-radius: var(--radius-sm);
-}
-
-.organizer-banner-actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.btn-organizer {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.45rem 0.85rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.btn-organizer:hover {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: #fff;
-}
-
-.btn-organizer.primary {
-  background: var(--gold-500);
-  border-color: var(--gold-600);
-  color: #fff;
-}
-
-.btn-organizer.primary:hover {
-  background: var(--gold-600);
+  background: var(--sage-vintage);
 }
 
 /* ==========================================================================
-   SVG Styling (Castillo de Santiago, Patio de Armas, Tables, Routes)
+   Estilizado SVG del Castillo (Detalles Vintage & Marfil)
    ========================================================================== */
-
-/* Castle Walls & Battlements */
 .svg-castle-wall {
-  fill: #8D8274;
-  stroke: #5D5448;
+  fill: #8E8274;
+  stroke: #5E5346;
   stroke-width: 4;
 }
 
 .svg-parapet {
-  fill: #A39788;
-  stroke: #6E6354;
+  fill: #A89C8E;
+  stroke: #736758;
   stroke-width: 2;
 }
 
-.svg-flagstones {
-  fill: url(#flagstone-pattern);
-  opacity: 0.85;
-}
-
-/* Amenity Markers */
-.svg-amenity-zone {
-  transition: all var(--transition-fast);
-}
-
-.svg-amenity-zone:hover {
-  filter: brightness(1.08);
-}
-
-/* Tables (SVG) */
 .svg-table-group {
   cursor: pointer;
   transition: transform var(--transition-fast);
@@ -1106,9 +1155,9 @@ body::before {
 }
 
 .svg-table-group:hover .svg-table-outer {
-  stroke: var(--gold-500);
+  stroke: var(--gold-antique);
   stroke-width: 3.5;
-  filter: drop-shadow(0 4px 8px rgba(197, 159, 78, 0.3));
+  filter: drop-shadow(0 4px 10px rgba(184, 146, 72, 0.35));
 }
 
 .svg-table-group.draggable {
@@ -1119,55 +1168,56 @@ body::before {
   cursor: grabbing !important;
 }
 
+/* Mesas redondas con mantel de lino marfil y aro dorado */
 .svg-table-outer {
   fill: #FFFDF9;
-  stroke: #C59F4E;
+  stroke: var(--gold-champagne);
   stroke-width: 2.2;
   transition: all var(--transition-fast);
 }
 
 .svg-table-inner {
-  fill: #F4EEDF;
-  stroke: #D6BA7A;
+  fill: #F6EFE3;
+  stroke: var(--gold-pale);
   stroke-width: 1;
 }
 
 .svg-table-num {
   font-family: var(--font-serif);
-  font-size: 15px;
-  font-weight: 800;
-  fill: #1D1A17;
+  font-size: 16px;
+  font-weight: 700;
+  fill: var(--text-primary);
   text-anchor: middle;
   dominant-baseline: central;
 }
 
 .svg-table-label {
   font-family: var(--font-sans);
-  font-size: 8px;
+  font-size: 7.5px;
   font-weight: 700;
-  fill: #736858;
+  fill: var(--text-muted);
   text-anchor: middle;
   dominant-baseline: central;
 }
 
 .svg-chair {
-  fill: #BAAA95;
-  stroke: #8C7B66;
+  fill: #D8CCA9;
+  stroke: #A89672;
   stroke-width: 1;
   transition: fill var(--transition-fast);
 }
 
-/* Selected / Highlighted Table Pulsing Rings */
+/* Mesa Seleccionada con Halo Dorado Pulsante */
 .svg-table-group.selected .svg-table-outer {
-  fill: #FFF9E6;
-  stroke: #B38628;
+  fill: #FFF9EE;
+  stroke: var(--gold-antique);
   stroke-width: 4;
-  filter: drop-shadow(0 0 16px rgba(197, 159, 78, 0.7));
+  filter: drop-shadow(0 0 18px rgba(197, 160, 89, 0.75));
 }
 
 .svg-pulse-ring {
   fill: none;
-  stroke: #C59F4E;
+  stroke: var(--gold-champagne);
   stroke-width: 2.5;
   animation: pulseHalo 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
   pointer-events: none;
@@ -1176,20 +1226,20 @@ body::before {
 @keyframes pulseHalo {
   0% {
     r: 28;
-    opacity: 0.9;
+    opacity: 0.95;
     stroke-width: 3;
   }
   100% {
-    r: 64;
+    r: 66;
     opacity: 0;
     stroke-width: 0.5;
   }
 }
 
-/* Animated Guided Route Path */
+/* Ruta Animada de Guiones Dorados */
 .svg-route-path-bg {
   fill: none;
-  stroke: rgba(197, 159, 78, 0.25);
+  stroke: rgba(197, 160, 89, 0.22);
   stroke-width: 8;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -1198,14 +1248,14 @@ body::before {
 
 .svg-route-path {
   fill: none;
-  stroke: #C59F4E;
-  stroke-width: 4;
+  stroke: var(--gold-champagne);
+  stroke-width: 3.5;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-dasharray: 10 8;
   animation: dashAnimation 1.2s linear infinite;
   pointer-events: none;
-  filter: drop-shadow(0 0 6px rgba(197, 159, 78, 0.7));
+  filter: drop-shadow(0 0 6px rgba(197, 160, 89, 0.6));
 }
 
 @keyframes dashAnimation {
@@ -1217,7 +1267,6 @@ body::before {
   }
 }
 
-/* Location Pin on destination */
 .svg-destination-pin {
   animation: pinBounce 1s ease-in-out infinite alternate;
   pointer-events: none;
@@ -1233,7 +1282,7 @@ body::before {
 }
 
 /* ==========================================================================
-   Modals & Drawers (Table Directory, File Uploader, Settings)
+   Modales (Directorio de Mesas, Carga, Catálogo)
    ========================================================================== */
 .modal-backdrop {
   position: fixed;
@@ -1241,8 +1290,8 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(20, 18, 16, 0.65);
-  backdrop-filter: blur(6px);
+  background: rgba(35, 28, 22, 0.55);
+  backdrop-filter: blur(8px);
   z-index: 200;
   display: flex;
   align-items: center;
@@ -1259,8 +1308,8 @@ body::before {
 }
 
 .modal-card {
-  background: var(--stone-white);
-  border: 1.5px solid var(--gold-400);
+  background: var(--ivory-white);
+  border: 1px solid var(--gold-border-strong);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
   max-width: 780px;
@@ -1271,6 +1320,16 @@ body::before {
   overflow: hidden;
   transform: translateY(20px) scale(0.97);
   transition: transform var(--transition-smooth);
+  position: relative;
+}
+
+.modal-card::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid var(--gold-border-soft);
+  border-radius: calc(var(--radius-xl) - 4px);
+  pointer-events: none;
 }
 
 .modal-backdrop.active .modal-card {
@@ -1278,67 +1337,85 @@ body::before {
 }
 
 .modal-header {
-  padding: 1.25rem 1.5rem;
-  background: var(--stone-900);
-  color: #fff;
+  padding: 1.35rem 1.65rem;
+  background: linear-gradient(180deg, #FAF4E8 0%, #F4EBDA 100%);
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid var(--gold-500);
+  border-bottom: 1px solid var(--gold-border);
+  position: relative;
+  z-index: 1;
 }
 
 .modal-title {
   font-family: var(--font-serif);
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  color: var(--text-primary);
 }
 
 .modal-close-btn {
-  background: transparent;
-  border: none;
-  color: #fff;
+  background: rgba(184, 146, 72, 0.12);
+  border: 1px solid var(--gold-border);
+  color: var(--text-secondary);
   cursor: pointer;
-  padding: 0.35rem;
+  width: 32px;
+  height: 32px;
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .modal-close-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--champagne-200);
+  color: var(--text-primary);
 }
 
 .modal-body {
-  padding: 1.5rem;
+  padding: 1.65rem;
   overflow-y: auto;
   flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
-/* Table Directory Grid inside Modal */
+/* Directorio de Mesas en Cuadrícula */
 .directory-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.25rem;
+  gap: 1.35rem;
 }
 
 .directory-table-card {
-  background: var(--stone-50);
-  border: 1px solid var(--stone-300);
+  background: var(--ivory-50);
+  border: 1px solid var(--gold-border);
   border-radius: var(--radius-lg);
-  padding: 1.15rem;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   cursor: pointer;
   transition: all var(--transition-fast);
+  position: relative;
+  box-shadow: var(--shadow-subtle);
+}
+
+.directory-table-card::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--gold-border-soft);
+  border-radius: calc(var(--radius-lg) - 3px);
+  pointer-events: none;
 }
 
 .directory-table-card:hover {
-  border-color: var(--gold-500);
-  background: var(--stone-white);
+  border-color: var(--gold-champagne);
+  background: #FFFFFF;
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
@@ -1351,39 +1428,41 @@ body::before {
 
 .directory-table-pill {
   font-family: var(--font-serif);
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: var(--stone-900);
+  color: var(--text-primary);
 }
 
 .directory-table-name {
-  font-size: 0.82rem;
-  color: var(--gold-700);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--gold-antique);
   font-weight: 600;
 }
 
 .directory-guest-list {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.35rem;
   margin-top: 0.25rem;
 }
 
 .directory-guest-item {
-  font-size: 0.8rem;
-  color: var(--stone-700);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
   padding: 0.2rem 0;
-  border-bottom: 1px dashed var(--stone-200);
+  border-bottom: 1px dashed rgba(221, 209, 189, 0.45);
 }
 
 .directory-guest-item:last-child {
   border-bottom: none;
 }
 
-/* File Drop Zone inside Upload Modal */
+/* File Drop Zone para Actualizar Excel */
 .upload-dropzone {
-  border: 2px dashed var(--gold-400);
-  background: var(--gold-100);
+  border: 2px dashed var(--gold-champagne);
+  background: var(--champagne-100);
   border-radius: var(--radius-lg);
   padding: 2.5rem 1.5rem;
   text-align: center;
@@ -1397,28 +1476,29 @@ body::before {
 
 .upload-dropzone:hover,
 .upload-dropzone.dragover {
-  background: rgba(197, 159, 78, 0.22);
-  border-color: var(--gold-600);
+  background: rgba(197, 160, 89, 0.2);
+  border-color: var(--gold-antique);
   transform: scale(1.01);
 }
 
 .upload-dropzone-icon {
   font-size: 2.5rem;
-  color: var(--gold-600);
+  color: var(--gold-antique);
 }
 
 .upload-dropzone-text {
-  font-size: 1rem;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
   font-weight: 600;
-  color: var(--stone-850);
+  color: var(--text-primary);
 }
 
 .upload-dropzone-subtext {
-  font-size: 0.8rem;
-  color: var(--stone-500);
+  font-size: 0.82rem;
+  color: var(--text-muted);
 }
 
-/* Toast Notifications */
+/* Notificaciones Toast */
 .toast-container {
   position: fixed;
   bottom: 1.5rem;
@@ -1431,17 +1511,18 @@ body::before {
 }
 
 .toast {
-  background: var(--stone-900);
-  color: #fff;
-  border-left: 4px solid var(--gold-500);
+  background: var(--ivory-white);
+  color: var(--text-primary);
+  border: 1px solid var(--gold-border-strong);
+  border-left: 4px solid var(--gold-champagne);
   border-radius: var(--radius-md);
-  padding: 0.85rem 1.25rem;
+  padding: 0.85rem 1.35rem;
   box-shadow: var(--shadow-xl);
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
   pointer-events: auto;
   animation: toastSlide 250ms cubic-bezier(0.16, 1, 0.3, 1);
   max-width: 380px;
@@ -1459,14 +1540,14 @@ body::before {
 }
 
 /* ==========================================================================
-   Footer
+   Pie de Página Nupcial
    ========================================================================== */
 .site-footer {
   margin-top: auto;
-  background: var(--stone-900);
-  color: var(--stone-400);
-  padding: 2.5rem 1.25rem 2rem;
-  border-top: 2px solid var(--gold-500);
+  background: linear-gradient(180deg, #F4EBDA 0%, #E8DCC8 100%);
+  color: var(--text-secondary);
+  padding: 3rem 1.25rem 2.2rem;
+  border-top: 1px solid var(--gold-border-strong);
 }
 
 .footer-container {
@@ -1476,98 +1557,45 @@ body::before {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .footer-monogram {
   font-family: var(--font-script);
-  font-size: 2.5rem;
-  color: var(--gold-400);
+  font-size: 3.2rem;
+  color: var(--gold-antique);
   line-height: 1;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .footer-venue-text {
-  font-family: var(--font-serif);
-  font-size: 0.88rem;
-  letter-spacing: 1.5px;
-  color: var(--stone-200);
+  font-family: var(--font-classic);
+  font-size: 0.82rem;
+  letter-spacing: 1.8px;
+  color: var(--text-primary);
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 .footer-copyright {
-  font-size: 0.76rem;
-  color: var(--stone-500);
-}
-
-.footer-admin-link {
-  font-size: 0.75rem;
-  color: var(--stone-400);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  transition: color var(--transition-fast);
-}
-
-.footer-admin-link:hover {
-  color: var(--gold-400);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--text-muted);
 }
 
 /* ==========================================================================
-   Utility Classes & Responsiveness
-   ========================================================================== */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-/* Mobile-Specific Tweaks */
-@media (max-width: 640px) {
-  .hero-title {
-    font-size: 1.7rem;
-    letter-spacing: 1px;
-  }
-  
-  .brand-venue {
-    display: none;
-  }
-
-  .header-actions .btn-outline span {
-    display: none;
-  }
-
-  .header-actions .btn-outline {
-    padding: 0.45rem;
-    width: 38px;
-    height: 38px;
-    justify-content: center;
-  }
-
-  .badge-table-num {
-    font-size: 2.5rem;
-  }
-}
-
-/* ==========================================================================
-   Organizer Panel Dedicated Styles (organizador.html)
+   Panel Privado del Organizador (organizador.html) - Adaptación Vintage
    ========================================================================== */
 .organizer-page {
-  background-color: var(--stone-50);
+  background-color: var(--champagne-50);
 }
 
 .organizer-topbar {
-  background: linear-gradient(90deg, #1C1917 0%, #292524 100%);
+  background: linear-gradient(90deg, #2A231C 0%, #383027 100%);
   color: #fff;
   padding: 0.85rem 1.25rem;
-  border-bottom: 2px solid var(--gold-500);
+  border-bottom: 2px solid var(--gold-champagne);
   box-shadow: var(--shadow-md);
   position: sticky;
   top: 0;
@@ -1591,8 +1619,8 @@ body::before {
 }
 
 .organizer-badge-live {
-  background: var(--gold-500);
-  color: #1C1917;
+  background: var(--gold-champagne);
+  color: #241E18;
   font-weight: 800;
   font-size: 0.72rem;
   letter-spacing: 1px;
@@ -1602,7 +1630,6 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  box-shadow: 0 0 10px rgba(197, 159, 78, 0.4);
 }
 
 .organizer-badge-live::before {
@@ -1610,7 +1637,7 @@ body::before {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #1C1917;
+  background: #241E18;
   animation: liveBlink 1.2s infinite ease-in-out;
 }
 
@@ -1642,16 +1669,16 @@ body::before {
 }
 
 .btn-guest-view:hover {
-  background: var(--stone-white);
-  color: var(--stone-900);
+  background: var(--ivory-50);
+  color: var(--text-primary);
   border-color: #fff;
   transform: translateY(-1px);
 }
 
-/* Command Bar */
+/* Barra de Comandos del Organizador */
 .organizer-command-bar {
-  background: var(--stone-white);
-  border-bottom: 1px solid var(--stone-300);
+  background: var(--ivory-white);
+  border-bottom: 1px solid var(--gold-border);
   padding: 0.75rem 1.25rem;
   position: sticky;
   top: 58px;
@@ -1684,33 +1711,32 @@ body::before {
   font-size: 0.82rem;
   font-weight: 600;
   border-radius: var(--radius-md);
-  border: 1px solid var(--stone-300);
-  background: var(--stone-white);
-  color: var(--stone-800);
+  border: 1px solid var(--gold-border);
+  background: var(--ivory-50);
+  color: var(--text-primary);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .btn-cmd:hover {
-  background: var(--gold-100);
-  border-color: var(--gold-500);
+  background: var(--champagne-100);
+  border-color: var(--gold-champagne);
   color: var(--gold-700);
   transform: translateY(-1px);
 }
 
 .btn-cmd.primary {
-  background: var(--gold-500);
-  border-color: var(--gold-600);
-  color: #fff;
+  background: linear-gradient(135deg, #FBF4E4 0%, #F5E8C8 100%);
+  border-color: var(--gold-champagne);
+  color: var(--gold-700);
   box-shadow: 0 2px 8px var(--gold-glow);
 }
 
 .btn-cmd.primary:hover {
-  background: var(--gold-600);
-  color: #fff;
+  background: linear-gradient(135deg, #F5E8C8 0%, #EBD7A7 100%);
 }
 
-/* Workspace 2-Column Grid */
+/* Espacio de Trabajo del Organizador */
 .organizer-workspace {
   max-width: 1440px;
   margin: 1.25rem auto 2.5rem;
@@ -1727,10 +1753,9 @@ body::before {
   }
 }
 
-/* Inspector Sidebar */
 .organizer-inspector {
-  background: var(--stone-white);
-  border: 1.5px solid var(--stone-300);
+  background: var(--ivory-white);
+  border: 1px solid var(--gold-border-strong);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
   overflow: hidden;
@@ -1741,9 +1766,9 @@ body::before {
 
 .inspector-header {
   padding: 1rem 1.25rem;
-  background: var(--stone-900);
-  color: #fff;
-  border-bottom: 2px solid var(--gold-500);
+  background: linear-gradient(180deg, #FAF4E8 0%, #F4EBDA 100%);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--gold-border);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1751,7 +1776,7 @@ body::before {
 
 .inspector-title {
   font-family: var(--font-serif);
-  font-size: 0.95rem;
+  font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
@@ -1768,8 +1793,8 @@ body::before {
 .inspector-table-card {
   padding: 0.75rem 0.9rem;
   border-radius: var(--radius-md);
-  border: 1px solid var(--stone-200);
-  background: var(--stone-50);
+  border: 1px solid var(--beige-200);
+  background: var(--ivory-50);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1778,14 +1803,14 @@ body::before {
 }
 
 .inspector-table-card:hover {
-  background: var(--gold-100);
-  border-color: var(--gold-400);
+  background: var(--champagne-100);
+  border-color: var(--gold-champagne);
   transform: translateX(2px);
 }
 
 .inspector-table-card.active {
-  background: var(--gold-100);
-  border-color: var(--gold-500);
+  background: var(--champagne-100);
+  border-color: var(--gold-antique);
   box-shadow: 0 0 0 2px var(--gold-glow);
 }
 
@@ -1795,14 +1820,15 @@ body::before {
 }
 
 .inspector-table-title {
-  font-size: 0.86rem;
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
   font-weight: 700;
-  color: var(--stone-900);
+  color: var(--text-primary);
 }
 
 .inspector-table-sub {
-  font-size: 0.72rem;
-  color: var(--stone-500);
+  font-size: 0.74rem;
+  color: var(--text-muted);
 }
 
 .inspector-table-coords {
@@ -1811,18 +1837,19 @@ body::before {
   font-weight: 700;
   padding: 0.2rem 0.45rem;
   border-radius: var(--radius-sm);
-  background: var(--stone-200);
-  color: var(--stone-800);
+  background: var(--champagne-100);
+  color: var(--gold-700);
+  border: 1px solid var(--gold-border);
 }
 
-/* Floating Drag Coordinate HUD */
+/* HUD Flotante de Arrastre */
 .drag-hud {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: rgba(29, 26, 23, 0.92);
-  color: #fff;
-  border: 1px solid var(--gold-500);
+  background: rgba(44, 36, 30, 0.94);
+  color: #FFFDF9;
+  border: 1px solid var(--gold-champagne);
   border-radius: var(--radius-md);
   padding: 0.45rem 0.85rem;
   font-size: 0.78rem;
@@ -1838,11 +1865,7 @@ body::before {
   display: block;
 }
 
-/* ==========================================================================
-   Full Venue Layout Editor & Gizmo Styles
-   ========================================================================== */
-
-/* SVG Venue Elements */
+/* Elementos SVG del Recinto en el Organizador */
 .svg-venue-element {
   cursor: grab;
   transition: filter var(--transition-fast);
@@ -1853,64 +1876,57 @@ body::before {
 }
 
 .svg-venue-element:hover {
-  filter: brightness(1.06) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+  filter: brightness(1.04) drop-shadow(0 4px 10px rgba(110, 85, 55, 0.2));
 }
 
 .svg-venue-element.selected {
-  filter: drop-shadow(0 0 12px rgba(197, 159, 78, 0.8)) !important;
+  filter: drop-shadow(0 0 14px rgba(197, 160, 89, 0.8)) !important;
 }
 
 .svg-venue-element.selected .elem-box {
-  stroke: var(--gold-500) !important;
+  stroke: var(--gold-antique) !important;
   stroke-width: 3.5 !important;
 }
 
-/* Selection bounding ring */
 .svg-gizmo-ring {
   fill: none;
-  stroke: var(--gold-500);
+  stroke: var(--gold-antique);
   stroke-width: 1.8;
   stroke-dasharray: 5 3;
   pointer-events: none;
 }
 
-/* Inspector Tabs */
+/* Pestañas del Inspector */
 .inspector-tabs {
   display: flex;
-  background: var(--stone-200);
-  border-bottom: 1px solid var(--stone-300);
+  background: var(--champagne-100);
+  border-bottom: 1px solid var(--gold-border);
 }
 
 .inspector-tab-btn {
   flex: 1;
-  padding: 0.65rem 0.5rem;
+  padding: 0.7rem 0.5rem;
   font-size: 0.78rem;
   font-weight: 700;
   border: none;
   background: transparent;
-  color: var(--stone-600);
+  color: var(--text-muted);
   cursor: pointer;
   transition: all var(--transition-fast);
   text-align: center;
 }
 
 .inspector-tab-btn.active {
-  background: var(--stone-white);
-  color: var(--stone-900);
-  border-bottom: 2px solid var(--gold-500);
+  background: var(--ivory-white);
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--gold-champagne);
 }
 
-.inspector-tab-btn:hover:not(.active) {
-  background: rgba(255, 255, 255, 0.5);
-  color: var(--stone-800);
-}
-
-/* Inspector Form */
 .inspector-form {
-  padding: 1.15rem;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.9rem;
 }
 
 .form-group {
@@ -1920,29 +1936,31 @@ body::before {
 }
 
 .form-label {
-  font-size: 0.75rem;
+  font-family: var(--font-classic);
+  font-size: 0.72rem;
   font-weight: 700;
-  color: var(--stone-700);
+  color: var(--gold-antique);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
 }
 
 .form-input {
   width: 100%;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--stone-300);
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--beige-300);
   border-radius: var(--radius-md);
   font-family: var(--font-sans);
-  font-size: 0.85rem;
-  color: var(--stone-900);
-  background: var(--stone-white);
+  font-size: 0.86rem;
+  color: var(--text-primary);
+  background: var(--ivory-50);
   outline: none;
   transition: border-color var(--transition-fast);
 }
 
 .form-input:focus {
-  border-color: var(--gold-500);
+  border-color: var(--gold-champagne);
   box-shadow: 0 0 0 3px var(--gold-glow);
+  background: #FFFFFF;
 }
 
 .form-row {
@@ -1951,7 +1969,7 @@ body::before {
   gap: 0.65rem;
 }
 
-/* Rotation Controls */
+/* Controles de Rotación */
 .rotation-control-box {
   display: flex;
   align-items: center;
@@ -1959,39 +1977,39 @@ body::before {
 }
 
 .rotation-btn {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--stone-300);
-  background: var(--stone-white);
-  color: var(--stone-800);
+  border: 1px solid var(--gold-border);
+  background: var(--ivory-50);
+  color: var(--text-primary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   font-weight: 700;
   transition: all var(--transition-fast);
 }
 
 .rotation-btn:hover {
-  background: var(--gold-100);
-  border-color: var(--gold-500);
+  background: var(--champagne-100);
+  border-color: var(--gold-champagne);
   color: var(--gold-700);
 }
 
 .rotation-slider {
   flex: 1;
-  accent-color: var(--gold-500);
+  accent-color: var(--gold-champagne);
   cursor: pointer;
 }
 
 .btn-danger {
-  padding: 0.55rem 1rem;
+  padding: 0.6rem 1rem;
   border-radius: var(--radius-md);
-  border: 1px solid #EF4444;
-  background: #FEF2F2;
-  color: #DC2626;
+  border: 1px solid #E5989B;
+  background: #FFF1F2;
+  color: #B91C1C;
   font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
@@ -2004,11 +2022,11 @@ body::before {
 }
 
 .btn-danger:hover {
-  background: #DC2626;
+  background: #B91C1C;
   color: #fff;
 }
 
-/* Add Item Modal Grid */
+/* Cuadrícula de Plantillas de Nuevos Elementos */
 .template-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -2017,10 +2035,10 @@ body::before {
 }
 
 .template-card {
-  padding: 1rem 0.75rem;
-  border: 1.5px solid var(--stone-200);
+  padding: 1.15rem 0.85rem;
+  border: 1px solid var(--gold-border);
   border-radius: var(--radius-lg);
-  background: var(--stone-white);
+  background: var(--ivory-50);
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -2031,25 +2049,25 @@ body::before {
 }
 
 .template-card:hover {
-  border-color: var(--gold-500);
-  background: var(--gold-100);
+  border-color: var(--gold-champagne);
+  background: var(--champagne-100);
   transform: translateY(-2px);
   box-shadow: var(--shadow-sm);
 }
 
 .template-icon {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   line-height: 1;
 }
 
 .template-title {
-  font-size: 0.8rem;
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
   font-weight: 700;
-  color: var(--stone-900);
+  color: var(--text-primary);
 }
 
 .template-desc {
-  font-size: 0.68rem;
-  color: var(--stone-500);
+  font-size: 0.7rem;
+  color: var(--text-muted);
 }
-

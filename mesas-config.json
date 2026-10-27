@@ -156,7 +156,7 @@
       "width": 140,
       "height": 28,
       "icon": "🚪",
-      "color": "#3B82F6",
+      "color": "#50677B",
       "deletable": true
     },
     {
@@ -170,7 +170,7 @@
       "width": 210,
       "height": 32,
       "icon": "✦",
-      "color": "#C59F4E",
+      "color": "#C5A059",
       "deletable": true
     },
     {
@@ -184,7 +184,7 @@
       "width": 96,
       "height": 96,
       "icon": "💃",
-      "color": "#C59F4E",
+      "color": "#C5A059",
       "shape": "circle",
       "deletable": true
     },
@@ -199,7 +199,7 @@
       "width": 88,
       "height": 70,
       "icon": "🍷",
-      "color": "#C59F4E",
+      "color": "#7D2C3E",
       "deletable": true
     },
     {
@@ -213,7 +213,7 @@
       "width": 78,
       "height": 54,
       "icon": "🚻",
-      "color": "#10B981",
+      "color": "#4D6E57",
       "deletable": true
     },
     {
@@ -227,7 +227,7 @@
       "width": 84,
       "height": 50,
       "icon": "📸",
-      "color": "#8B5CF6",
+      "color": "#8E5B70",
       "deletable": true
     },
     {
@@ -241,7 +241,7 @@
       "width": 95,
       "height": 95,
       "icon": "🏰",
-      "color": "#786D5F",
+      "color": "#8E8274",
       "deletable": true
     },
     {
@@ -255,7 +255,7 @@
       "width": 46,
       "height": 46,
       "icon": "🧭",
-      "color": "#C59F4E",
+      "color": "#C5A059",
       "deletable": true
     }
   ]

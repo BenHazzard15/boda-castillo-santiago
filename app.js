@@ -38,14 +38,14 @@
 
   // Default venue installations & landmark elements
   const DEFAULT_ELEMENTS_FALLBACK = [
-    { id: "elem-entrance", type: "entrance", nombre: "Entrada Principal", subtitulo: "Arco del Patio de Armas", x: 50.0, y: 92.5, rotation: 0, width: 140, height: 28, icon: "🚪", color: "#3B82F6", deletable: true },
-    { id: "elem-stage", type: "stage", nombre: "Estrado Presidencial", subtitulo: "Muro de Honor", x: 50.0, y: 9.0, rotation: 0, width: 210, height: 32, icon: "✦", color: "#C59F4E", deletable: true },
-    { id: "elem-dance-floor", type: "dancefloor", nombre: "Pista de Baile", subtitulo: "Música & Luces", x: 50.0, y: 70.0, rotation: 0, width: 96, height: 96, icon: "💃", color: "#C59F4E", shape: "circle", deletable: true },
-    { id: "elem-bar", type: "bar", nombre: "Barra Cóctel", subtitulo: "Manzanilla de Sanlúcar", x: 89.0, y: 52.0, rotation: 0, width: 88, height: 70, icon: "🍷", color: "#C59F4E", deletable: true },
-    { id: "elem-restrooms", type: "restrooms", nombre: "Servicios Sanitarios", subtitulo: "Aseos Señoras & Caballeros", x: 10.0, y: 62.0, rotation: 0, width: 78, height: 54, icon: "🚻", color: "#10B981", deletable: true },
-    { id: "elem-photocall", type: "photocall", nombre: "Photocall & Firmas", subtitulo: "Recuerdos del enlace", x: 86.0, y: 82.0, rotation: 0, width: 84, height: 50, icon: "📸", color: "#8B5CF6", deletable: true },
-    { id: "elem-torre", type: "landmark", nombre: "Torre del Homenaje", subtitulo: "Fortaleza S. XV", x: 7.5, y: 9.5, rotation: 0, width: 95, height: 95, icon: "🏰", color: "#786D5F", deletable: true },
-    { id: "elem-compass", type: "compass", nombre: "Rosa de los Vientos", subtitulo: "Norte", x: 89.0, y: 12.0, rotation: 0, width: 46, height: 46, icon: "🧭", color: "#C59F4E", deletable: true }
+    { id: "elem-entrance", type: "entrance", nombre: "Entrada Principal", subtitulo: "Arco del Patio de Armas", x: 50.0, y: 92.5, rotation: 0, width: 140, height: 28, icon: "🚪", color: "#50677B", deletable: true },
+    { id: "elem-stage", type: "stage", nombre: "Estrado Presidencial", subtitulo: "Muro de Honor", x: 50.0, y: 9.0, rotation: 0, width: 210, height: 32, icon: "✦", color: "#C5A059", deletable: true },
+    { id: "elem-dance-floor", type: "dancefloor", nombre: "Pista de Baile", subtitulo: "Música & Luces", x: 50.0, y: 70.0, rotation: 0, width: 96, height: 96, icon: "💃", color: "#C5A059", shape: "circle", deletable: true },
+    { id: "elem-bar", type: "bar", nombre: "Barra Cóctel", subtitulo: "Manzanilla de Sanlúcar", x: 89.0, y: 52.0, rotation: 0, width: 88, height: 70, icon: "🍷", color: "#7D2C3E", deletable: true },
+    { id: "elem-restrooms", type: "restrooms", nombre: "Servicios Sanitarios", subtitulo: "Aseos Señoras & Caballeros", x: 10.0, y: 62.0, rotation: 0, width: 78, height: 54, icon: "🚻", color: "#4D6E57", deletable: true },
+    { id: "elem-photocall", type: "photocall", nombre: "Photocall & Firmas", subtitulo: "Recuerdos del enlace", x: 86.0, y: 82.0, rotation: 0, width: 84, height: 50, icon: "📸", color: "#8E5B70", deletable: true },
+    { id: "elem-torre", type: "landmark", nombre: "Torre del Homenaje", subtitulo: "Fortaleza S. XV", x: 7.5, y: 9.5, rotation: 0, width: 95, height: 95, icon: "🏰", color: "#8E8274", deletable: true },
+    { id: "elem-compass", type: "compass", nombre: "Rosa de los Vientos", subtitulo: "Norte", x: 89.0, y: 12.0, rotation: 0, width: 46, height: 46, icon: "🧭", color: "#C5A059", deletable: true }
   ];
 
   // Default fallback guest list in case local file:// blocks fetch
@@ -382,47 +382,47 @@
 
       if (el.type === 'entrance') {
         innerHtml = `
-          <ellipse cx="0" cy="0" rx="${w/2 + 10}" ry="${h/2 + 8}" fill="#3B82F6" opacity="0.15"/>
-          <rect x="-${w/2}" y="-${h/2}" width="${w}" height="${h}" rx="6" class="elem-box" fill="#1D1A17" stroke="#3B82F6" stroke-width="2.2" filter="url(#table-shadow)"/>
-          <polygon points="-8,-${h/2} 0,-${h/2 - 7} 8,-${h/2}" fill="#3B82F6"/>
-          <text x="0" y="2" font-family="'Cinzel', serif" font-size="10" font-weight="700" fill="#93C5FD" text-anchor="middle">${escapeHtml(el.nombre)}</text>
-          <text x="0" y="${h/2 + 12}" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="600" fill="#60A5FA" text-anchor="middle">${escapeHtml(el.subtitulo || '')}</text>
+          <ellipse cx="0" cy="0" rx="${w/2 + 10}" ry="${h/2 + 8}" fill="#B89248" opacity="0.12"/>
+          <rect x="-${w/2}" y="-${h/2}" width="${w}" height="${h}" rx="6" class="elem-box" fill="#FAF6EE" stroke="#50677B" stroke-width="2" filter="url(#table-shadow)"/>
+          <polygon points="-8,-${h/2} 0,-${h/2 - 7} 8,-${h/2}" fill="#50677B"/>
+          <text x="0" y="2" font-family="'Cormorant Garamond', Georgia, serif" font-size="11" font-weight="700" fill="#2C241E" text-anchor="middle">${escapeHtml(el.nombre)}</text>
+          <text x="0" y="${h/2 + 12}" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="600" fill="#50677B" text-anchor="middle">${escapeHtml(el.subtitulo || '')}</text>
         `;
       } else if (el.type === 'dancefloor') {
         const r = w / 2;
         innerHtml = `
-          <circle cx="0" cy="0" r="${r}" class="elem-box" fill="url(#dance-floor-grad)" stroke="#C59F4E" stroke-width="2.2" stroke-dasharray="4 2"/>
-          <circle cx="0" cy="0" r="${r * 0.65}" fill="none" stroke="#A88232" stroke-width="1"/>
+          <circle cx="0" cy="0" r="${r}" class="elem-box" fill="url(#dance-floor)" stroke="#C5A059" stroke-width="2" stroke-dasharray="4 2"/>
+          <circle cx="0" cy="0" r="${r * 0.65}" fill="none" stroke="#D8B873" stroke-width="1"/>
           <text x="0" y="-3" font-size="14" text-anchor="middle">${el.icon || '💃'}</text>
-          <text x="0" y="11" font-family="'Cinzel', serif" font-size="8.5" font-weight="700" fill="#3D342A" text-anchor="middle">${escapeHtml(el.nombre)}</text>
+          <text x="0" y="11" font-family="'Cormorant Garamond', Georgia, serif" font-size="9.5" font-weight="700" fill="#3D3228" text-anchor="middle">${escapeHtml(el.nombre)}</text>
         `;
       } else if (el.type === 'compass') {
         const r = w / 2;
         innerHtml = `
-          <circle cx="0" cy="0" r="${r}" class="elem-box" fill="#FFFFFF" stroke="#C59F4E" stroke-width="1.5" filter="url(#table-shadow)"/>
-          <polygon points="0,-${r*0.8} ${r*0.22},0 0,-${r*0.18}" fill="#C59F4E"/>
-          <polygon points="0,-${r*0.8} -${r*0.22},0 0,-${r*0.18}" fill="#8C6A24"/>
-          <polygon points="0,${r*0.8} ${r*0.18},0 0,${r*0.18}" fill="#D4CBC0"/>
-          <polygon points="0,${r*0.8} -${r*0.18},0 0,${r*0.18}" fill="#A39788"/>
-          <text x="0" y="-${r + 2}" font-family="'Cinzel', serif" font-size="9" font-weight="800" fill="#8C6A24" text-anchor="middle">N</text>
-          <text x="0" y="${r + 10}" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="700" fill="#786D5F" text-anchor="middle">${escapeHtml(el.nombre)}</text>
+          <circle cx="0" cy="0" r="${r}" class="elem-box" fill="#FAF6EE" stroke="#C5A059" stroke-width="1.5" filter="url(#table-shadow)"/>
+          <polygon points="0,-${r*0.8} ${r*0.22},0 0,-${r*0.18}" fill="#C5A059"/>
+          <polygon points="0,-${r*0.8} -${r*0.22},0 0,-${r*0.18}" fill="#9B782E"/>
+          <polygon points="0,${r*0.8} ${r*0.18},0 0,${r*0.18}" fill="#E8DFD1"/>
+          <polygon points="0,${r*0.8} -${r*0.18},0 0,${r*0.18}" fill="#C7B79E"/>
+          <text x="0" y="-${r + 2}" font-family="'Cormorant Garamond', Georgia, serif" font-size="10" font-weight="700" fill="#7A5B1E" text-anchor="middle">N</text>
+          <text x="0" y="${r + 10}" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="600" fill="#766B5F" text-anchor="middle">${escapeHtml(el.nombre)}</text>
         `;
       } else if (el.type === 'landmark') {
         innerHtml = `
-          <rect x="-${w/2}" y="-${h/2}" width="${w}" height="${h}" rx="6" class="elem-box" fill="#786D5F" stroke="#4F463B" stroke-width="3" filter="url(#table-shadow)"/>
-          <rect x="-${w/2 - 6}" y="-${h/2 - 6}" width="${w - 12}" height="${h - 12}" rx="4" fill="#918575" stroke="#63574A" stroke-width="1.5"/>
+          <rect x="-${w/2}" y="-${h/2}" width="${w}" height="${h}" rx="6" class="elem-box" fill="#918577" stroke="#685D51" stroke-width="2.5" filter="url(#table-shadow)"/>
+          <rect x="-${w/2 - 6}" y="-${h/2 - 6}" width="${w - 12}" height="${h - 12}" rx="4" fill="#A89C8E" stroke="#7A6E61" stroke-width="1.2"/>
           <text x="0" y="-8" font-size="14" text-anchor="middle">${el.icon || '🏰'}</text>
-          <text x="0" y="8" font-family="'Cinzel', serif" font-size="9" font-weight="700" fill="#FFFFFF" text-anchor="middle">${escapeHtml(el.nombre)}</text>
+          <text x="0" y="8" font-family="'Cormorant Garamond', Georgia, serif" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">${escapeHtml(el.nombre)}</text>
           <text x="0" y="19" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="600" fill="#FAF5EC" text-anchor="middle">${escapeHtml(el.subtitulo || '')}</text>
         `;
       } else {
-        const color = el.color || "#C59F4E";
+        const color = el.color || "#C5A059";
         innerHtml = `
-          <rect x="-${w/2}" y="-${h/2}" width="${w}" height="${h}" rx="8" class="elem-box" fill="#FFFFFF" stroke="${color}" stroke-width="2.2" filter="url(#table-shadow)"/>
+          <rect x="-${w/2}" y="-${h/2}" width="${w}" height="${h}" rx="8" class="elem-box" fill="#FFFDF9" stroke="${color}" stroke-width="1.8" filter="url(#table-shadow)"/>
           <circle cx="0" cy="-${h/4}" r="11" fill="${color}" opacity="0.12"/>
           <text x="0" y="-${h/4 - 4}" font-size="13" text-anchor="middle">${el.icon || '✦'}</text>
-          <text x="0" y="${h/6}" font-family="'Cinzel', serif" font-size="8.5" font-weight="700" fill="#1C1917" text-anchor="middle">${escapeHtml(el.nombre)}</text>
-          <text x="0" y="${h/6 + 10}" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="600" fill="#78716C" text-anchor="middle">${escapeHtml(el.subtitulo || '')}</text>
+          <text x="0" y="${h/6}" font-family="'Cormorant Garamond', Georgia, serif" font-size="9.5" font-weight="700" fill="#2C241E" text-anchor="middle">${escapeHtml(el.nombre)}</text>
+          <text x="0" y="${h/6 + 10}" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="600" fill="#766B5F" text-anchor="middle">${escapeHtml(el.subtitulo || '')}</text>
         `;
       }
 
@@ -827,11 +827,11 @@
       let shapeHtml = '';
 
       if (isPresidential) {
-        // Oval / Rectangular Presidential Table
+        // Oval / Rectangular Presidential Table (Mantel Marfil con Oro Champagne)
         shapeHtml = `
           <!-- Presidential Table Tablecloth & Rim -->
-          <rect x="-56" y="-22" width="112" height="44" rx="20" class="svg-table-outer elem-box" fill="#3D342A" stroke="#C59F4E" stroke-width="2.5" filter="url(#table-shadow)"/>
-          <rect x="-48" y="-16" width="96" height="32" rx="14" class="svg-table-inner" fill="#4A3F33" stroke="#E6CE93" stroke-width="1"/>
+          <rect x="-56" y="-22" width="112" height="44" rx="20" class="svg-table-outer elem-box" fill="#FAF5EB" stroke="#C5A059" stroke-width="2.5" filter="url(#table-shadow)"/>
+          <rect x="-48" y="-16" width="96" height="32" rx="14" class="svg-table-inner" fill="#F4EBD9" stroke="#EBD7A7" stroke-width="1"/>
           
           <!-- Chairs for Presidential (6 seats) -->
           <circle cx="-42" cy="-28" r="5" class="svg-chair"/>
@@ -841,8 +841,8 @@
           <circle cx="-25" cy="28" r="5" class="svg-chair"/>
           <circle cx="25" cy="28" r="5" class="svg-chair"/>
 
-          <text x="0" y="-3" class="svg-table-num" fill="#E6CE93" font-size="11">PRESIDENCIA</text>
-          <text x="0" y="8" class="svg-table-label" fill="#D4AF37" font-size="7.5">${escapeHtml(cfg.nombre)}</text>
+          <text x="0" y="-3" class="svg-table-num" fill="#7A5B1E" font-size="11" font-weight="700">PRESIDENCIA</text>
+          <text x="0" y="8" class="svg-table-label" fill="#B89248" font-family="'Cormorant Garamond', Georgia, serif" font-size="8.5" font-style="italic" font-weight="600">${escapeHtml(cfg.nombre)}</text>
         `;
       } else {
         // Circular Guest Tables
@@ -866,12 +866,12 @@
           <!-- Circular Table -->
           <circle cx="0" cy="0" r="${tableRadius}" class="svg-table-outer elem-box" filter="url(#table-shadow)"/>
           <circle cx="0" cy="0" r="${tableRadius - 5}" class="svg-table-inner"/>
-          <circle cx="0" cy="0" r="14" fill="#FFFFFF" stroke="#C59F4E" stroke-width="1.2"/>
+          <circle cx="0" cy="0" r="14" fill="#FFFDF9" stroke="#C5A059" stroke-width="1.2"/>
           
           <text x="0" y="0" class="svg-table-num">${tableNum}</text>
           <text x="0" y="19" class="svg-table-label">${guestCount}p</text>
-          <!-- Table custom name label floating below -->
-          <text x="0" y="44" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" fill="#4B453E" text-anchor="middle">${escapeHtml(cfg.nombre)}</text>
+          <!-- Table custom name label in classic Cormorant italic -->
+          <text x="0" y="44" font-family="'Cormorant Garamond', Georgia, serif" font-size="10.5" font-weight="700" font-style="italic" fill="#2C241E" text-anchor="middle">${escapeHtml(cfg.nombre)}</text>
         `;
       }
 
@@ -1431,7 +1431,7 @@
 
   function triggerCelebration() {
     confettiParticles = [];
-    const colors = ['#C59F4E', '#D8B568', '#E7CC8E', '#8C6A24', '#FFFFFF', '#FAF3E0'];
+    const colors = ['#C5A059', '#D8B873', '#EBD7A7', '#B89248', '#FFFDF9', '#FAF5EB', '#F4EBD9'];
 
     for (let i = 0; i < 65; i++) {
       confettiParticles.push({
