@@ -1,0 +1,132 @@
+[
+  {
+    "id": 0,
+    "numero": 0,
+    "nombre": "Mesa Presidencial • Ester & Samuel",
+    "x": 50.0,
+    "y": 18.0,
+    "shape": "oval",
+    "capacidad": 6,
+    "descripcion": "Mesa de los novios y padrinos frente al Muro de Honor"
+  },
+  {
+    "id": 1,
+    "numero": 1,
+    "nombre": "Albariza",
+    "x": 26.0,
+    "y": 32.0,
+    "shape": "circle",
+    "capacidad": 8,
+    "descripcion": "Familia Muñoz (Tíos y primos)"
+  },
+  {
+    "id": 2,
+    "numero": 2,
+    "nombre": "Manzanilla",
+    "x": 74.0,
+    "y": 32.0,
+    "shape": "circle",
+    "capacidad": 8,
+    "descripcion": "Familia Madrid (Tíos y primos)"
+  },
+  {
+    "id": 3,
+    "numero": 3,
+    "nombre": "Bajo de Guía",
+    "x": 19.0,
+    "y": 48.0,
+    "shape": "circle",
+    "capacidad": 8,
+    "descripcion": "Familia Gómez (Tíos y primos maternos)"
+  },
+  {
+    "id": 4,
+    "numero": 4,
+    "nombre": "Doñana",
+    "x": 81.0,
+    "y": 48.0,
+    "shape": "circle",
+    "capacidad": 9,
+    "descripcion": "Amigos íntimos de la novia"
+  },
+  {
+    "id": 5,
+    "numero": 5,
+    "nombre": "Torre del Homenaje",
+    "x": 37.0,
+    "y": 34.0,
+    "shape": "circle",
+    "capacidad": 9,
+    "descripcion": "Amigos íntimos del novio"
+  },
+  {
+    "id": 6,
+    "numero": 6,
+    "nombre": "Guadalquivir",
+    "x": 63.0,
+    "y": 34.0,
+    "shape": "circle",
+    "capacidad": 8,
+    "descripcion": "Compañeros de trabajo de la novia"
+  },
+  {
+    "id": 7,
+    "numero": 7,
+    "nombre": "Bonanza",
+    "x": 36.0,
+    "y": 62.0,
+    "shape": "circle",
+    "capacidad": 8,
+    "descripcion": "Compañeros de trabajo del novio"
+  },
+  {
+    "id": 8,
+    "numero": 8,
+    "nombre": "San Salvador",
+    "x": 64.0,
+    "y": 62.0,
+    "shape": "circle",
+    "capacidad": 8,
+    "descripcion": "Amigos de Sevilla y Cádiz"
+  },
+  {
+    "id": 9,
+    "numero": 9,
+    "nombre": "La Calzada",
+    "x": 23.0,
+    "y": 65.0,
+    "shape": "circle",
+    "capacidad": 8,
+    "descripcion": "Amigos de los padres de la novia"
+  },
+  {
+    "id": 10,
+    "numero": 10,
+    "nombre": "Las Piletas",
+    "x": 77.0,
+    "y": 65.0,
+    "shape": "circle",
+    "capacidad": 8,
+    "descripcion": "Amigos de los padres del novio"
+  },
+  {
+    "id": 11,
+    "numero": 11,
+    "nombre": "Barrameda",
+    "x": 33.0,
+    "y": 78.0,
+    "shape": "circle",
+    "capacidad": 8,
+    "descripcion": "Mesa Joven / Primos"
+  },
+  {
+    "id": 12,
+    "numero": 12,
+    "nombre": "Tartessos",
+    "x": 67.0,
+    "y": 78.0,
+    "shape": "circle",
+    "capacidad": 8,
+    "descripcion": "Familia de Madrid e invitados especiales"
+  }
+]

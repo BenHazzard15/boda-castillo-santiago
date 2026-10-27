@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Boda Ester & Samuel | Encuentra tu Mesa en el Castillo de Santiago</title>
+  
+  <!-- SEO & Social Sharing Meta Tags -->
+  <meta name="description" content="Localizador interactivo de mesas para los invitados al enlace matrimonial de Ester & Samuel en el histórico Patio de Armas del Castillo de Santiago, Sanlúcar de Barrameda.">
+  <meta name="keywords" content="Castillo de Santiago, Sanlucar de Barrameda, Boda, Mesas, Seating Plan, Plano Interactivo, Patio de Armas">
+  <meta name="author" content="Ester & Samuel">
+  <meta name="theme-color" content="#C59F4E">
+  
+  <meta property="og:title" content="Boda Ester & Samuel | Encuentra tu Mesa">
+  <meta property="og:description" content="Descubre tu mesa y la ruta para llegar en el Castillo de Santiago.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon Monogram -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%231D1A17' stroke='%23C59F4E' stroke-width='4'/><text x='50' y='60' font-family='Cinzel,serif' font-size='38' font-weight='bold' fill='%23C59F4E' text-anchor='middle'>E&amp;S</text></svg>">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Confetti Canvas for Celebratory Moments -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ========================================================================
+       Top Navigation Bar
+       ======================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <a href="#inicio" class="brand-wrapper" title="Boda Ester & Samuel">
+        <!-- SVG Monogram Crest -->
+        <svg class="brand-crest" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="#1D1A17" stroke="#C59F4E" stroke-width="2.5"/>
+          <circle cx="50" cy="50" r="41" fill="none" stroke="#C59F4E" stroke-width="0.75" stroke-dasharray="3 2"/>
+          <path d="M50 16 L53 22 L59 23 L55 27 L56 33 L50 30 L44 33 L45 27 L41 23 L47 22 Z" fill="#D4AF37"/>
+          <text x="50" y="64" font-family="'Cinzel', serif" font-size="28" font-weight="700" fill="#E6CE93" text-anchor="middle" letter-spacing="1">E&amp;S</text>
+          <path d="M30 76 Q50 84 70 76" stroke="#C59F4E" stroke-width="1.5" fill="none"/>
+        </svg>
+
+        <div class="brand-text">
+          <span class="brand-subtitle-script">Bienvenidos a nuestro enlace</span>
+          <span class="brand-title">Ester &amp; Samuel</span>
+          <span class="brand-venue">Castillo de Santiago • Sanlúcar de Barrameda</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <button id="btn-open-directory" class="btn-outline" title="Ver lista completa de mesas">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span>Todas las Mesas</span>
+        </button>
+
+        <button id="btn-toggle-organizer" class="btn-icon" title="Modo Organizador (Ajustar distribución)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
+        </button>
+
+        <button id="btn-open-upload" class="btn-icon" title="Cargar o actualizar hoja Excel">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       Main Content Container
+       ======================================================================== -->
+  <main id="inicio">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-ornament">
+        <div class="hero-ornament-line"></div>
+        <div class="hero-ornament-icon">✦</div>
+        <div class="hero-ornament-line"></div>
+      </div>
+
+      <div class="hero-date-badge">
+        <span>Sábado, 12 de Septiembre de 2026</span>
+        <span>•</span>
+        <span>Patio de Armas</span>
+      </div>
+
+      <h1 class="hero-title">Encuentra Tu Mesa</h1>
+      <p class="hero-subtitle">
+        Por favor, busca tu nombre o apellido a continuación para descubrir tu mesa asignada, tus acompañantes y la guía de acceso en el recinto.
+      </p>
+
+      <!-- Predictive Autocomplete Search Bar -->
+      <div class="search-container" id="search-section">
+        <div class="search-box-wrapper" id="search-box-wrapper">
+          <div class="search-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <input 
+            type="text" 
+            id="guest-search-input" 
+            class="search-input" 
+            placeholder="Escribe tu nombre o apellido (ej. Ester, Muñoz, Madrid...)"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Buscar invitado"
+            aria-expanded="false"
+            aria-controls="search-dropdown"
+          />
+          <button id="search-clear-btn" class="search-clear-btn" title="Borrar búsqueda" aria-label="Borrar búsqueda">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          <span class="search-badge-count" id="guest-count-badge">Cargando...</span>
+        </div>
+
+        <!-- Autocomplete Dropdown List -->
+        <div class="autocomplete-dropdown" id="search-dropdown" role="listbox">
+          <!-- Dynamically populated via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Guest Result Card (Triggered upon selecting guest) -->
+    <section class="guest-result-wrapper" id="guest-result-section">
+      <div class="guest-card">
+        <div class="guest-card-header">
+          <div class="guest-card-greeting">
+            <span class="guest-welcome-tag">¡Qué alegría tenerte con nosotros!</span>
+            <h2 class="guest-name-title" id="res-guest-name">Ester Muñoz</h2>
+          </div>
+          <button class="guest-dismiss-btn" id="btn-dismiss-result" title="Cerrar ficha">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <div class="guest-card-body">
+          <!-- Big Table Badge Column -->
+          <div class="table-highlight-badge">
+            <span class="badge-table-label">Tu Mesa Asignada</span>
+            <div class="badge-table-num" id="res-table-num">4</div>
+            <div class="badge-table-theme" id="res-table-theme">Doñana</div>
+            <div class="badge-table-desc" id="res-table-desc">Amigos íntimos de la novia</div>
+            
+            <button class="badge-action-btn" id="btn-focus-table-map">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+              </svg>
+              <span>Ver en el Plano</span>
+            </button>
+          </div>
+
+          <!-- Companions and Guidance Column -->
+          <div class="guest-details-column">
+            <!-- Companions list -->
+            <div class="companions-block">
+              <div class="companions-header">
+                <div class="companions-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                  <span>Tus acompañantes de mesa</span>
+                </div>
+                <span class="companions-count" id="res-companions-count">8 comensales</span>
+              </div>
+              <div class="companions-grid" id="res-companions-grid">
+                <!-- Chips dynamically injected -->
+              </div>
+            </div>
+
+            <!-- Route and Access Guide -->
+            <div class="route-guide-box">
+              <div class="route-guide-icon">📍</div>
+              <div class="route-guide-text" id="res-route-text">
+                Accede por la <span class="route-guide-strong">Entrada Principal (Arco de Armas)</span> y camina recto hacia el sector derecho del patio. Sigue la línea dorada en el plano para orientarte.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         Organizer Toolbar (Visible only when toggle activated)
+         ======================================================================== -->
+    <div class="organizer-banner" id="organizer-banner">
+      <div class="organizer-banner-text">
+        <span class="organizer-banner-badge">Modo Organizador</span>
+        <span>Arrastra las mesas en el plano para ajustar su posición exacta.</span>
+      </div>
+      <div class="organizer-banner-actions">
+        <button class="btn-organizer primary" id="btn-copy-json" title="Copiar nuevas coordenadas en formato JSON">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span>Copiar JSON</span>
+        </button>
+        <button class="btn-organizer" id="btn-save-local" title="Guardar cambios localmente en este navegador">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+            <polyline points="7 3 7 8 15 8"></polyline>
+          </svg>
+          <span>Guardar</span>
+        </button>
+        <button class="btn-organizer" id="btn-reset-positions" title="Restaurar coordenadas originales">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="1 4 1 10 7 10"></polyline>
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+          </svg>
+          <span>Restaurar</span>
+        </button>
+        <button class="btn-organizer" id="btn-close-organizer" title="Salir del modo organizador">
+          ✕ Salir
+        </button>
+      </div>
+    </div>
+
+    <!-- ========================================================================
+         Interactive Venue Map Section (Patio de Armas - Castillo de Santiago)
+         ======================================================================== -->
+    <section class="map-section" id="plano-recinto">
+      <div class="map-header-card">
+        <div class="map-title-group">
+          <h2 class="map-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C59F4E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+              <line x1="8" y1="2" x2="8" y2="18"></line>
+              <line x1="16" y1="6" x2="16" y2="22"></line>
+            </svg>
+            <span>Plano del Recinto • Patio de Armas</span>
+          </h2>
+          <span class="map-subtitle">Castillo de Santiago (~766 m²). Desplázate o haz zoom para explorar las mesas e instalaciones.</span>
+        </div>
+
+        <div class="map-toolbar">
+          <button id="btn-toggle-route-layer" class="btn-outline" title="Mostrar u ocultar ruta de acceso">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span id="route-layer-label">Ocultar Ruta</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Canvas / SVG Viewport Container -->
+      <div class="map-canvas-container" id="map-container">
+        
+        <!-- Floating Venue Badges -->
+        <div class="map-floating-info">
+          <div class="map-badge-info">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="12 2 15 9 22 9 17 14 19 21 12 17 5 21 7 14 2 9 9 9 12 2"></polygon>
+            </svg>
+            <span>Castillo de Santiago (S. XV)</span>
+          </div>
+        </div>
+
+        <!-- Floating Legend -->
+        <div class="map-legend-bar">
+          <div class="legend-item">
+            <span class="legend-dot entrance"></span>
+            <span>Entrada</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot presidential"></span>
+            <span>Mesa Presidencial</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot table"></span>
+            <span>Mesas de Invitados</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot amenities"></span>
+            <span>Servicios &amp; Barra</span>
+          </div>
+        </div>
+
+        <!-- Floating Zoom & Reset Buttons -->
+        <div class="map-floating-controls">
+          <button class="floating-btn" id="btn-zoom-in" title="Acercar mapa (+)">+</button>
+          <button class="floating-btn" id="btn-zoom-out" title="Alejar mapa (-)">−</button>
+          <button class="floating-btn" id="btn-zoom-reset" title="Centrar plano completo">⟲</button>
+        </div>
+
+        <!-- High-Fidelity SVG Interactive Map -->
+        <svg 
+          id="venue-svg" 
+          viewBox="0 0 1000 660" 
+          preserveAspectRatio="xMidYMid meet"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <!-- Flagstone courtyard texture pattern -->
+            <pattern id="flagstone-pattern" width="60" height="60" patternUnits="userSpaceOnUse">
+              <rect width="60" height="60" fill="#E8E1D5"/>
+              <path d="M0 0 h60 M0 30 h60 M0 60 h60 M30 0 v30 M15 30 v30 M45 30 v30" stroke="#DDD4C5" stroke-width="1.2"/>
+              <circle cx="30" cy="30" r="1.5" fill="#C9BDAA"/>
+            </pattern>
+
+            <!-- Radial glow for entrance -->
+            <radialGradient id="entrance-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+            </radialGradient>
+
+            <!-- Table Gold Gradient -->
+            <linearGradient id="gold-rim" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#E8CE90"/>
+              <stop offset="50%" stop-color="#C59F4E"/>
+              <stop offset="100%" stop-color="#8C6A24"/>
+            </linearGradient>
+
+            <!-- Dance Floor Parquet Pattern -->
+            <radialGradient id="dance-floor" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#FAF5EC"/>
+              <stop offset="70%" stop-color="#E5D6C0"/>
+              <stop offset="100%" stop-color="#C5AF90"/>
+            </radialGradient>
+
+            <!-- Drop shadow for tables -->
+            <filter id="table-shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#1D1A17" flood-opacity="0.18"/>
+            </filter>
+            
+            <filter id="pin-shadow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.25"/>
+            </filter>
+          </defs>
+
+          <!-- Transform group for Pan & Zoom -->
+          <g id="map-viewport-group">
+            
+            <!-- Courtyard Outer Stone Boundary & Floor -->
+            <!-- Slightly trapezoidal shape representing Patio de Armas -->
+            <polygon 
+              points="45,40 955,40 925,620 75,620" 
+              fill="url(#flagstone-pattern)" 
+              stroke="#8D8274" 
+              stroke-width="5"
+            />
+
+            <!-- Historic Crenellated Walls (Parapets & Almenas) -->
+            <g class="svg-castle-walls">
+              <!-- North Wall & Battlements (Top) -->
+              <rect x="40" y="24" width="920" height="16" class="svg-castle-wall" rx="2"/>
+              <!-- South Wall & Battlements (Bottom) -->
+              <rect x="70" y="620" width="860" height="18" class="svg-castle-wall" rx="2"/>
+              <!-- West Wall (Left) -->
+              <line x1="45" y1="35" x2="75" y2="625" stroke="#6E6354" stroke-width="14" stroke-linecap="round"/>
+              <!-- East Wall (Right) -->
+              <line x1="955" y1="35" x2="925" y2="625" stroke="#6E6354" stroke-width="14" stroke-linecap="round"/>
+            </g>
+
+            <!-- Landmark Towers & Arches -->
+            <!-- Torre del Homenaje (North-West Fortress Corner) -->
+            <g class="svg-amenity-zone" id="landmark-torre">
+              <rect x="30" y="16" width="95" height="95" rx="6" fill="#786D5F" stroke="#4F463B" stroke-width="3"/>
+              <rect x="36" y="22" width="83" height="83" rx="4" fill="#918575" stroke="#63574A" stroke-width="1.5"/>
+              <text x="77" y="58" font-family="'Cinzel', serif" font-size="9" font-weight="700" fill="#FFFFFF" text-anchor="middle">TORRE DEL</text>
+              <text x="77" y="70" font-family="'Cinzel', serif" font-size="9" font-weight="700" fill="#FFFFFF" text-anchor="middle">HOMENAJE</text>
+            </g>
+
+            <!-- North Stage & Presidential Canopy Wall -->
+            <g id="landmark-presidencia-backdrop">
+              <rect x="400" y="44" width="200" height="30" rx="4" fill="#3D342A" stroke="#C59F4E" stroke-width="2"/>
+              <text x="500" y="63" font-family="'Cinzel', serif" font-size="11" font-weight="700" fill="#E6CE93" text-anchor="middle" letter-spacing="1">
+                ✦ ESTRADO PRESIDENCIAL ✦
+              </text>
+            </g>
+
+            <!-- Central Festive Dance Floor & Chandelier Zone -->
+            <g id="landmark-dance-floor">
+              <circle cx="500" cy="460" r="48" fill="url(#dance-floor)" stroke="#C59F4E" stroke-width="2" stroke-dasharray="4 2"/>
+              <circle cx="500" cy="460" r="32" fill="none" stroke="#A88232" stroke-width="1"/>
+              <text x="500" y="457" font-family="'Cinzel', serif" font-size="8.5" font-weight="700" fill="#3D342A" text-anchor="middle">PISTA DE</text>
+              <text x="500" y="468" font-family="'Cinzel', serif" font-size="8.5" font-weight="700" fill="#3D342A" text-anchor="middle">BAILE</text>
+            </g>
+
+            <!-- Restrooms / Servicios Sanitarios (West Mid-Wall) -->
+            <g class="svg-amenity-zone" id="landmark-aseos">
+              <rect x="62" y="380" width="75" height="52" rx="6" fill="#FFFFFF" stroke="#10B981" stroke-width="2" filter="url(#table-shadow)"/>
+              <circle cx="99" cy="397" r="8" fill="#E9F4EE"/>
+              <text x="99" y="401" font-size="10" text-anchor="middle">🚻</text>
+              <text x="99" y="418" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" fill="#047857" text-anchor="middle">SERVICIOS</text>
+            </g>
+
+            <!-- Cocktail & Manzanilla de Sanlúcar Bar (East Wall) -->
+            <g class="svg-amenity-zone" id="landmark-bar">
+              <rect x="850" y="320" width="85" height="70" rx="6" fill="#FFFFFF" stroke="#C59F4E" stroke-width="2" filter="url(#table-shadow)"/>
+              <circle cx="892" cy="342" r="10" fill="#FBF4E3"/>
+              <text x="892" y="346" font-size="11" text-anchor="middle">🍷</text>
+              <text x="892" y="364" font-family="'Cinzel', serif" font-size="7.5" font-weight="700" fill="#8C6A24" text-anchor="middle">BARRA CÓCTEL</text>
+              <text x="892" y="375" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="600" fill="#786348" text-anchor="middle">Manzanilla</text>
+            </g>
+
+            <!-- Photocall & Guestbook (South-East Corner) -->
+            <g class="svg-amenity-zone" id="landmark-photocall">
+              <rect x="830" y="525" width="80" height="48" rx="6" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2" filter="url(#table-shadow)"/>
+              <text x="870" y="546" font-size="10" text-anchor="middle">📸</text>
+              <text x="870" y="561" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="700" fill="#6D28D9" text-anchor="middle">PHOTOCALL</text>
+            </g>
+
+            <!-- Main Entrance: Arco de Armas (South Center) -->
+            <g id="landmark-entrance">
+              <!-- Glow field -->
+              <ellipse cx="500" cy="620" rx="70" ry="30" fill="url(#entrance-glow)"/>
+              <!-- Gate portal styling -->
+              <rect x="430" y="605" width="140" height="28" rx="6" fill="#1D1A17" stroke="#3B82F6" stroke-width="2"/>
+              <polygon points="490,600 500,590 510,600" fill="#3B82F6"/>
+              <text x="500" y="622" font-family="'Cinzel', serif" font-size="10" font-weight="700" fill="#93C5FD" text-anchor="middle" letter-spacing="1">
+                ENTRADA PRINCIPAL
+              </text>
+              <text x="500" y="642" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600" fill="#60A5FA" text-anchor="middle">
+                Arco del Patio de Armas
+              </text>
+            </g>
+
+            <!-- Compass Rose (Decorative North Arrow) -->
+            <g id="compass-rose" transform="translate(890, 80)">
+              <circle cx="0" cy="0" r="22" fill="#FFFFFF" stroke="#C59F4E" stroke-width="1" opacity="0.85"/>
+              <polygon points="0,-18 5,0 0,-4" fill="#C59F4E"/>
+              <polygon points="0,-18 -5,0 0,-4" fill="#8C6A24"/>
+              <polygon points="0,18 4,0 0,4" fill="#D4CBC0"/>
+              <polygon points="0,18 -4,0 0,4" fill="#A39788"/>
+              <text x="0" y="-22" font-family="'Cinzel', serif" font-size="9" font-weight="800" fill="#8C6A24" text-anchor="middle">N</text>
+            </g>
+
+            <!-- Guided Dynamic Route Layer (Under tables so tables stay crisp on top) -->
+            <g id="route-layer" style="display: none;">
+              <path id="route-bg" class="svg-route-path-bg" d=""></path>
+              <path id="route-path" class="svg-route-path" d=""></path>
+              <!-- Animated Beacon at Entrance Point -->
+              <circle cx="500" cy="605" r="5" fill="#3B82F6"/>
+              <circle cx="500" cy="605" r="12" fill="none" stroke="#3B82F6" stroke-width="2" opacity="0.6"/>
+            </g>
+
+            <!-- Dynamic Tables Layer: Injected and Managed by app.js -->
+            <g id="tables-layer">
+              <!-- Rendered dynamically from config & excel data -->
+            </g>
+
+            <!-- Destination Pulse & Pin Overlay Layer -->
+            <g id="destination-overlay" style="display: none;">
+              <!-- Animated Pulsing Halo -->
+              <circle id="dest-pulse" class="svg-pulse-ring" cx="0" cy="0" r="30"></circle>
+              <!-- Pin Pointer -->
+              <g id="dest-pin" class="svg-destination-pin" filter="url(#pin-shadow)" transform="translate(0, 0)">
+                <path d="M0 -34 C-9 -34 -15 -27 -15 -19 C-15 -10 0 0 0 0 C0 0 15 -10 15 -19 C15 -27 9 -34 0 -34 Z" fill="#C59F4E" stroke="#FFFFFF" stroke-width="2"/>
+                <circle cx="0" cy="-20" r="5" fill="#FFFFFF"/>
+              </g>
+            </g>
+
+          </g>
+        </svg>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       Modal: Table Directory ("Directorio Completo de Mesas")
+       ======================================================================== -->
+  <div class="modal-backdrop" id="modal-directory" role="dialog" aria-modal="true" aria-labelledby="modal-directory-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-directory-title">Todas las Mesas y Comensales</h3>
+        <button class="modal-close-btn" id="btn-close-directory" title="Cerrar ventana">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="directory-grid" id="directory-container">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Modal: Upload & Data Management ("Cargar Hoja Excel")
+       ======================================================================== -->
+  <div class="modal-backdrop" id="modal-upload" role="dialog" aria-modal="true" aria-labelledby="modal-upload-title">
+    <div class="modal-card" style="max-width: 580px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-upload-title">Actualizar Lista de Invitados</h3>
+        <button class="modal-close-btn" id="btn-close-upload" title="Cerrar ventana">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.88rem; color: var(--stone-600); margin-bottom: 1.25rem;">
+          Puedes subir un archivo Excel (<code>.xlsx</code> / <code>.xls</code>) o <code>.csv</code> con las columnas 
+          <strong>Número / ID</strong>, <strong>Nombre y Apellido</strong> y <strong>Número de mesa</strong>. La aplicación recalculará todas las mesas y el buscador al instante.
+        </p>
+
+        <!-- Hidden real file input -->
+        <input type="file" id="excel-file-input" accept=".xlsx, .xls, .csv, .json" style="display: none;">
+
+        <!-- Dropzone Clickable Area -->
+        <div class="upload-dropzone" id="upload-dropzone">
+          <div class="upload-dropzone-icon">📊</div>
+          <div class="upload-dropzone-text">Arrastra aquí tu archivo Excel o haz clic para seleccionar</div>
+          <div class="upload-dropzone-subtext">Formatos admitidos: .xlsx, .xls, .csv, .json</div>
+        </div>
+
+        <div style="margin-top: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+          <button class="btn-outline" id="btn-reload-default" style="font-size: 0.8rem;">
+            🔄 Recargar invitados.xlsx original
+          </button>
+          <span style="font-size: 0.75rem; color: var(--stone-500);">Procesamiento local 100% seguro</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ========================================================================
+       Footer
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-monogram">E &amp; S</div>
+      <div class="footer-venue-text">Castillo de Santiago • Sanlúcar de Barrameda</div>
+      <p class="footer-copyright">
+        Enlace Matrimonial de Ester Muñoz &amp; Samuel Madrid &bull; Patio de Armas
+      </p>
+      <button class="footer-admin-link" id="footer-admin-toggle">
+        Acceso Organizador &bull; Ajustes de plano
+      </button>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       Scripts: Local SheetJS with CDN fallback + Application Logic
+       ======================================================================== -->
+  <script src="vendor/xlsx.full.min.js"></script>
+  <script>
+    // CDN Fallback if local vendor script fails
+    if (typeof XLSX === 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
+      document.head.appendChild(script);
+    }
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
